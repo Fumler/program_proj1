@@ -15,7 +15,7 @@ public class Main extends JFrame {
 	public Main() {
 		
 		// override JFrame constructor
-		super("derp");
+		super(Messages.getString("Main.title")); //$NON-NLS-1$
 		// tell application to close on exit, instead of hide on exit
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		// set the default size
@@ -29,7 +29,7 @@ public class Main extends JFrame {
 		try {
 			UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
 		} catch (Exception e) {
-			System.out.println("[ERROR] LOOK AND FEEL: " + e);
+			System.out.println(Messages.getString("Main.catchError") + e); //$NON-NLS-1$
 		}
 	}
 
@@ -37,6 +37,8 @@ public class Main extends JFrame {
 	 * @param args The variables that are sent with the "java" command
 	 */
 	public static void main(String[] args) {
+		// set the locale
+		Messages.setLocale(args[0], args[1]);
 		new Main();
 	}
 
