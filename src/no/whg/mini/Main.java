@@ -24,7 +24,8 @@ public class Main extends JFrame {
 		setLocationRelativeTo(null);
 		// show the frame
 		setVisible(true);
-
+		
+		
 		// set the look and feel of the program to resemble users OS, if possible
 		try {
 			UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
@@ -38,7 +39,7 @@ public class Main extends JFrame {
 	 */
 	public static void main(String[] args) {
 		// set the locale
-		Messages.setLocale(args[0], args[1]);
+		//Messages.setLocale(args[0], args[1]);
 		new Main();
 	}
 
