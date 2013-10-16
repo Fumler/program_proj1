@@ -23,17 +23,18 @@ public class Toolbar extends JToolBar {
 		setRollover(true);
 		JButton newButton = null;
 		
-		ImageIcon newImage = new ImageIcon("NEW.GIF");
+		ImageIcon newImage = new ImageIcon("gbleditor_icons/NEW.GIF");
 		newButton = new JButton(newImage);
-		newButton.setPreferredSize(new Dimension(25,25));
+		newButton.setMinimumSize(new Dimension(20,20));
+		newButton.setMaximumSize(new Dimension(40,40));
 		newButton.setToolTipText("Create a new layout");
 		add(newButton);
 		
-		ImageIcon newRowImage = new ImageIcon("NEWROW.GIF");
+		ImageIcon newRowImage = new ImageIcon("gbleditor_icons/NEWROW.GIF");
 		newButton = new JButton(newRowImage);
+		newButton.setMinimumSize(new Dimension(20,20));
+		newButton.setMaximumSize(new Dimension(40,40));
 		newButton.setToolTipText("Add a new row");
-		
-		
 		add(newButton);
 	}
 	
