@@ -100,14 +100,11 @@ public class Menubar extends JMenuBar implements ActionListener, ItemListener
 		if(e.getActionCommand() == "New")
 		{
 			
-			int i = 0;
-			
-			i+= i;
 		}
 		else if(e.getActionCommand() == "Load")
 		{
-			JFileChooser openWindow = new JFileChooser();
-			int rVal = openWindow.showOpenDialog(Menubar.this);
+			JFileChooser openWindow = new JFileChooser();	//create a new FileChooser
+			int rVal = openWindow.showOpenDialog(Menubar.this);	//creates a window for opening files
 			
 		}
 		else if(e.getActionCommand() == "Save")
@@ -116,8 +113,8 @@ public class Menubar extends JMenuBar implements ActionListener, ItemListener
 		}
 		else if(e.getActionCommand() == "Save As..")
 		{
-			JFileChooser saveAsWindow = new JFileChooser();
-			int rVal = saveAsWindow.showSaveDialog(Menubar.this);
+			JFileChooser saveAsWindow = new JFileChooser();	//create a new FileChooser
+			int rVal = saveAsWindow.showSaveDialog(Menubar.this);	//creates a window for saving files and specify name
 		}
 		else if(e.getActionCommand() == "Preview")
 		{
@@ -129,7 +126,7 @@ public class Menubar extends JMenuBar implements ActionListener, ItemListener
 		}
 		else if(e.getActionCommand() == "Exit")
 		{
-			System.exit(0);
+			System.exit(0);	//exit program
 		}
 		
 	}
