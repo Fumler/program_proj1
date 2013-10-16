@@ -123,6 +123,11 @@ public class Toolbar extends JToolBar implements ActionListener, ItemListener
 		{
 			JFileChooser saveWindow = new JFileChooser();	//create a FileChooser
 			int rVal = saveWindow.showSaveDialog(Toolbar.this);	//creates a window for saving files with name
+			
+			if(rVal == JFileChooser.APPROVE_OPTION)
+			{
+				
+			}
 		}
 		else if(e.getActionCommand() == "generate")
 		{
