@@ -18,11 +18,21 @@ public class Toolbar extends JToolBar {
 	
 	public Toolbar()
 	{
+		
 		JToolBar toolBar = new JToolBar();
+		
+		setSize(400,30);
 		ImageIcon newImage = new ImageIcon("NEW.GIF");
 		JButton newButton = new JButton(newImage);
+		newButton.setSize(50,50);
+		add(newButton);
 		
-		toolBar.add(newButton);
+		ImageIcon newRowImage = new ImageIcon("NEWROW.GIF");
+		newButton = new JButton(newRowImage);
+		newButton.setSize(50,50);
+		
+		
+		add(newButton);
 	}
 	
 
