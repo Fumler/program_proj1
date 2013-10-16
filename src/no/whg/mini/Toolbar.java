@@ -12,9 +12,8 @@ import javax.swing.JButton;
  * @author Fredrik, Peer
  *
  */
-public class Toolbar extends JToolBar {
-	
-	
+public class Toolbar extends JToolBar
+{
 	public Toolbar()
 	{
 		JToolBar toolBar = new JToolBar();
@@ -22,15 +21,13 @@ public class Toolbar extends JToolBar {
 		toolBar.setMaximumSize(new Dimension(400,80));
 		setFloatable(false);
 		setRollover(true);
-		setAlignmentY(TOP_ALIGNMENT);
+		
 		JButton newButton = new JButton();
 		
 		ImageIcon newImage = new ImageIcon("gbleditor_icons/NEW.GIF");
 		newButton = new JButton(newImage);
 		newButton.setToolTipText("Create a new layout");
 		add(newButton);
-		
-		
 		
 		ImageIcon newOpenImage = new ImageIcon("gbleditor_icons/OPENDOC.GIF");
 		newButton = new JButton(newOpenImage);	

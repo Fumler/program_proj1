@@ -8,6 +8,7 @@ package no.whg.mini;
  * @author Fredrik, Peer
  *
  */
-public class Render extends Main {
+public class Render extends Main
+{
 
 }

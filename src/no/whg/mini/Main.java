@@ -3,6 +3,8 @@
  */
 package no.whg.mini;
 
+import java.awt.BorderLayout;
+
 import javax.swing.*;
 
 /**
@@ -25,7 +27,8 @@ public class Main extends JFrame {
 		// show the frame
 		setVisible(true);
 		
-		add(new Toolbar());
+		setJMenuBar(new Menubar());
+		add(new Toolbar(), BorderLayout.NORTH);
 		// set the look and feel of the program to resemble users OS, if possible
 		try {
 			UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());

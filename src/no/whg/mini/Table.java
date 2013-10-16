@@ -10,6 +10,7 @@ import javax.swing.JTable;
  * @author Fredrik, Peer
  *
  */
-public class Table extends JTable {
+public class Table extends JTable
+{
 
 }
