@@ -19,7 +19,7 @@ public class Toolbar extends JToolBar
 		JToolBar toolBar = new JToolBar();
 		toolBar.setMinimumSize(new Dimension(400, 50));
 		toolBar.setMaximumSize(new Dimension(400,80));
-		setFloatable(false);
+		setFloatable(true);
 		setRollover(true);
 		
 		JButton newButton = new JButton();
