@@ -27,14 +27,21 @@ public class Main extends JFrame {
 		// show the frame
 		setVisible(true);
 		
-		setJMenuBar(new Menubar());
-		add(new Toolbar(), BorderLayout.NORTH);
 		// set the look and feel of the program to resemble users OS, if possible
 		try {
 			UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
 		} catch (Exception e) {
 			System.out.println(Messages.getString("Main.catchError") + e); //$NON-NLS-1$
 		}
+		
+		// add the menu bar at the top
+		setJMenuBar(new Menubar());
+		
+		// add the toolbar below the menu bar
+		add(new Toolbar(), BorderLayout.NORTH);
+		
+		// pack it all together
+		pack();
 	}
 
 	/**
