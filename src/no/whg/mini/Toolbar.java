@@ -8,7 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
-
+import java.io.*;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JToolBar;
@@ -20,6 +20,7 @@ import javax.swing.JButton;
  */
 public class Toolbar extends JToolBar implements ActionListener, ItemListener
 {
+	File currentFile;
 	public Toolbar()
 	{
 		JToolBar toolBar = new JToolBar();
@@ -121,12 +122,45 @@ public class Toolbar extends JToolBar implements ActionListener, ItemListener
 		}
 		else if(e.getActionCommand() == "save")
 		{
-			JFileChooser saveWindow = new JFileChooser();	//create a FileChooser
-			int rVal = saveWindow.showSaveDialog(Toolbar.this);	//creates a window for saving files with name
-			
-			if(rVal == JFileChooser.APPROVE_OPTION)
+			if(currentFile != null)
 			{
+				try 
+				{
+					FileOutputStream fileOutput = new FileOutputStream(currentFile);
+					ObjectOutputStream objectOutput = new ObjectOutputStream(fileOutput);
+					objectOutput.writeObject(null);
+					objectOutput.close();
+					fileOutput.close();
+				}
+				catch (IOException e1)
+				{
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+			else
+			{
+				JFileChooser saveAsWindow = new JFileChooser();	//create a new FileChooser
+				int rVal = saveAsWindow.showSaveDialog(Toolbar.this);	//creates a window for saving files and specify name
 				
+				if(rVal == JFileChooser.APPROVE_OPTION)
+				{
+					currentFile = saveAsWindow.getSelectedFile();
+					
+					try 
+					{
+						FileOutputStream fileOutput = new FileOutputStream(currentFile);
+						ObjectOutputStream objectOutput = new ObjectOutputStream(fileOutput);
+						objectOutput.writeObject(null);
+						objectOutput.close();
+						fileOutput.close();
+					}
+					catch (IOException e1)
+					{
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				}
 			}
 		}
 		else if(e.getActionCommand() == "generate")
