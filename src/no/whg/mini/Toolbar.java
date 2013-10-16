@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.io.*;
+
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JToolBar;
@@ -119,22 +120,41 @@ public class Toolbar extends JToolBar implements ActionListener, ItemListener
 			JFileChooser openWindow = new JFileChooser();	//create a FileChooser
 			int rVal = openWindow.showOpenDialog(Toolbar.this);	//creates a window for opening files
 			
+			if(rVal == JFileChooser.APPROVE_OPTION)
+			{
+				currentFile = openWindow.getSelectedFile();	//get the file the user selected
+				
+				if(currentFile != null)	//if the file exists
+				{
+					try
+					{
+						FileInputStream fileInput = new FileInputStream(currentFile);	//create a file input stream
+						ObjectInputStream inputObject = new ObjectInputStream(fileInput);	//create an object input from the file
+						inputObject.readObject();	//read the input stream
+						inputObject.close();	//close the input stream
+						fileInput.close();	//close the file input
+					}
+					catch(IOException | ClassNotFoundException e1)
+					{
+						e1.printStackTrace();
+					}
+				}
+			}
 		}
 		else if(e.getActionCommand() == "save")
 		{
-			if(currentFile != null)
+			if(currentFile != null) //as long as there is a file to save
 			{
 				try 
 				{
-					FileOutputStream fileOutput = new FileOutputStream(currentFile);
-					ObjectOutputStream objectOutput = new ObjectOutputStream(fileOutput);
-					objectOutput.writeObject(null);
-					objectOutput.close();
-					fileOutput.close();
+					FileOutputStream fileOutput = new FileOutputStream(currentFile);	//create a file output
+					ObjectOutputStream objectOutput = new ObjectOutputStream(fileOutput);	//create an object output from the stream
+					objectOutput.writeObject(null);	//write to the object output stream
+					objectOutput.close();	//closer the object output stream
+					fileOutput.close();	//close the file stream
 				}
 				catch (IOException e1)
 				{
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}
@@ -143,21 +163,20 @@ public class Toolbar extends JToolBar implements ActionListener, ItemListener
 				JFileChooser saveAsWindow = new JFileChooser();	//create a new FileChooser
 				int rVal = saveAsWindow.showSaveDialog(Toolbar.this);	//creates a window for saving files and specify name
 				
-				if(rVal == JFileChooser.APPROVE_OPTION)
+				if(rVal == JFileChooser.APPROVE_OPTION)	//if the user chose the save option
 				{
-					currentFile = saveAsWindow.getSelectedFile();
+					currentFile = saveAsWindow.getSelectedFile();	//get the file selected by the user
 					
-					try 
+					try
 					{
-						FileOutputStream fileOutput = new FileOutputStream(currentFile);
-						ObjectOutputStream objectOutput = new ObjectOutputStream(fileOutput);
-						objectOutput.writeObject(null);
-						objectOutput.close();
-						fileOutput.close();
+						FileOutputStream fileOutput = new FileOutputStream(currentFile);	//create a file output stream
+						ObjectOutputStream objectOutput = new ObjectOutputStream(fileOutput);	//create an object output stream
+						objectOutput.writeObject(null);	//write to the object output stream
+						objectOutput.close();	//close the object output stream
+						fileOutput.close();	//close the file stream
 					}
 					catch (IOException e1)
 					{
-						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
 				}
