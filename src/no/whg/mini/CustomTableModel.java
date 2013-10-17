@@ -3,6 +3,7 @@
  */
 package no.whg.mini;
 
+import java.awt.Toolkit;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import java.util.Vector;
@@ -140,27 +141,32 @@ public class CustomTableModel extends AbstractTableModel {
     
     public void moveRowUp() {
     	int row = table.getSelectedRow();
-    	System.out.println(row);
-    	TableData data = dataVector.get(row);
-    	TableData dataAbove = dataVector.get(row-1);
-    	
-  
-    	dataVector.remove(row-1);
-        dataVector.add(row-1, data);
-        dataVector.remove(row);
-        dataVector.add(row, dataAbove);
-   
-    	
-    	
-    	
-    	
-
-    	
+    	if (row > 0) {
+    		System.out.println("COLS: " + getColumnCount() + " ROW1: " + row + " ROW2: " + (row - 1));
+    		for (int col = 0; col < getColumnCount(); col++) {
+    			Object o1 = getValueAt(row, col);
+    			Object o2 = getValueAt(row - 1, col);
+    			System.out.println("O1: " + o1 + " O2: " + o2);
+    			setValueAt(o1, row - 1, col);
+    			setValueAt(o2, row, col);
+    		}	
+    	} else
+    		Toolkit.getDefaultToolkit().beep(); // Thanks to Inge Dalby
     }
 
     public void moveRowDown() {
     	int row = table.getSelectedRow();
-    	TableData data = dataVector.get(row);
+    	System.out.println("Rowcount: " + getRowCount() + " Row: " + row);
+    	if (row < getRowCount() - 1) {
+    		for(int col = 0; col < getColumnCount(); col++) {
+    			Object o1 = getValueAt(row, col);
+    			Object o2 = getValueAt(row + 1, col);
+    			setValueAt(o1, row + 1, col);
+    			setValueAt(o2, row,  col);
+    		}
+    	} else
+    		Toolkit.getDefaultToolkit().beep();
+    	
     	
     }
     

@@ -48,7 +48,7 @@ public class Main extends JFrame{
 		
 		// set the look and feel of the program to resemble users OS, if possible
 		try {
-			UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 		} catch (Exception e) {
 			System.out.println(Messages.getString("Main.catchError") + e); //$NON-NLS-1$
 		}
