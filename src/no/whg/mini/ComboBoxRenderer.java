@@ -18,10 +18,11 @@ public class ComboBoxRenderer extends JLabel implements ListCellRenderer
 
 	JLabel testImage;
 	ImageIcon[] tempImages;
+	String[] alignmentConstraints = { "NORTH", "SOUTH", "WEST", "EAST", "NORTHWEST", "NORTHEAST", "SOUTHWEST", "SOUTHEAST", "CENTER"};
 	ImageIcon icon;
+	String alignment;
 	public ComboBoxRenderer()
 	{
-		icon = new ImageIcon("gbleditor_icons/anchor_center.png");
 		setOpaque(true);
 		setHorizontalAlignment(CENTER);
 		setVerticalAlignment(CENTER);
@@ -38,6 +39,7 @@ public class ComboBoxRenderer extends JLabel implements ListCellRenderer
 			int index, boolean isSelected, boolean hasFocus)
 	{
 		int selectedIndex = ((Integer)value).intValue();
+		value = alignmentConstraints[selectedIndex];
 		
 		if(isSelected)
 		{
@@ -47,10 +49,12 @@ public class ComboBoxRenderer extends JLabel implements ListCellRenderer
 		else
 		{
 			setBackground(list.getBackground());
-			setBackground(list.getForeground());
+			setForeground(list.getForeground());
 		}
 		
 		icon = tempImages[selectedIndex];
+		alignment = alignmentConstraints[selectedIndex];
+		setText(alignment);
 		setIcon(icon);
 		
 		// TODO Auto-generated method stub
