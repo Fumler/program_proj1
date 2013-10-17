@@ -97,6 +97,7 @@ public class TableData implements Serializable{
      */
     public void setVarName(String varName) {
         this.varName = varName;
+        
     }
     /**
      * @return the text
