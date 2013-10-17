@@ -4,16 +4,13 @@
 package no.whg.mini;
 
 import java.io.Serializable;
-import javax.swing.ImageIcon;
-import javax.swing.JPanel;
 
 /**
  * Class that holds the data of each object (or list item) in the table
  * @author Fredrik
  *
  */
-public class TableData implements Serializable{
-    private static final long serialVersionUID = 1L;
+public class TableData implements Serializable {
     private String type;
     private String varName;
     private String text;
