@@ -3,16 +3,16 @@
  */
 package no.whg.mini;
 
-import java.awt.*;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JToolBar;
-import javax.swing.JButton;
 /**
  * Class that handles the toolbar of the program, save buttons etc
  * @author Fredrik, Peer
@@ -20,8 +20,11 @@ import javax.swing.JButton;
  */
 public class Toolbar extends JToolBar implements ActionListener, ItemListener
 {
-	public Toolbar()
+	private CustomTableModel tableModel;
+	
+	public Toolbar(CustomTableModel tableModel)
 	{
+		this.tableModel = tableModel;
 		JToolBar toolBar = new JToolBar();
 		toolBar.setMinimumSize(new Dimension(400, 50));
 		toolBar.setMaximumSize(new Dimension(400,80));
@@ -139,6 +142,8 @@ public class Toolbar extends JToolBar implements ActionListener, ItemListener
 		}
 		else if(e.getActionCommand() == "newRow")
 		{
+			tableModel.addRow();
+			
 			
 		}
 		else if(e.getActionCommand() == "rowDown")

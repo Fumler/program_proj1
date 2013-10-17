@@ -14,7 +14,14 @@ import javax.swing.*;
  *
  */
 public class Main extends JFrame {
-	public Main() {
+	private CustomTableModel tableModel = new CustomTableModel();
+	private JTable table = new JTable(tableModel);
+	private String[] objects = {"JLabel", "JButton", "JTextField", "JTextArea", 
+			"JCheckBox", "JList", "JComboBox", "JSpinnerList", "JSpinnerNumber"
+	};
+	private JComboBox objectType = new JComboBox(objects);
+	
+	public Main() {	
 		
 		// override JFrame constructor
 		super(Messages.getString("Main.title")); //$NON-NLS-1$
@@ -34,11 +41,19 @@ public class Main extends JFrame {
 			System.out.println(Messages.getString("Main.catchError") + e); //$NON-NLS-1$
 		}
 		
+		
+		
 		// add the menu bar at the top
 		setJMenuBar(new Menubar());
 		
 		// add the toolbar below the menu bar
-		add(new Toolbar(), BorderLayout.NORTH);
+		add(new Toolbar(tableModel), BorderLayout.NORTH);
+		
+		
+		tableModel.setTableFrame(this);
+		add(new JScrollPane(table), BorderLayout.CENTER);
+		table.getColumnModel().getColumn(0).setCellEditor(new DefaultCellEditor(objectType));
+		
 		
 		// pack it all together
 		pack();
