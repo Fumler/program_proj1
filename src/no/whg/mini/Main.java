@@ -5,6 +5,7 @@ package no.whg.mini;
 
 import java.awt.BorderLayout;
 
+
 import javax.swing.*;
 
 /**
@@ -15,10 +16,17 @@ import javax.swing.*;
  */
 public class Main extends JFrame {
 	private CustomTableModel tableModel = new CustomTableModel();
+	ImageIcon[] images;
+	Integer[] imageIndex;
 	private JTable table = new JTable(tableModel);
+	private String[] imagePath = {"anchor_center_shifted.png", "anchor_center.png", "anchor_east_shifted.png", "anchor_east.png",
+			"anchor_north_shifted.png", "anchor_north.png", "anchor_northeast_shifted.png", "anchor_northeast.png", "anchor_northwest.png",
+			"anchor_south_shifted.png", "anchor_south.png", "anchor_southeast_shifted.png", "anchor_southeast.png", "anchor_southwest.png",
+			"anchor_west.png"};
 	private String[] objects = {"JLabel", "JButton", "JTextField", "JTextArea", 
 			"JCheckBox", "JList", "JComboBox", "JSpinnerList", "JSpinnerNumber"
 	};
+	
 	private JComboBox objectType = new JComboBox(objects);
 	
 	public Main() {	
@@ -41,7 +49,7 @@ public class Main extends JFrame {
 			System.out.println(Messages.getString("Main.catchError") + e); //$NON-NLS-1$
 		}
 		
-		
+		createImages();
 		
 		// add the menu bar at the top
 		setJMenuBar(new Menubar());
@@ -58,6 +66,19 @@ public class Main extends JFrame {
 		// pack it all together
 		pack();
 	}
+	
+	public void createImages()
+	{
+		 images = new ImageIcon[imagePath.length];
+		 imageIndex = new Integer[imagePath.length];
+		 for(int i = 0; i < imagePath.length; i++)
+		 {
+			 imageIndex[i] = new Integer(i);
+			 images[i] = new ImageIcon(imagePath[i]);
+		 }
+		 
+		 JComboBox anchorList = new JComboBox(imageIndex);
+	};
 
 	/**
 	 * @param args The variables that are sent with the "java" command
