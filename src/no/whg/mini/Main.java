@@ -60,12 +60,12 @@ public class Main extends JFrame{
 		
 		// add the toolbar below the menu bar
 		add(new Toolbar(tableModel), BorderLayout.NORTH);
-		add(anchorList, BorderLayout.SOUTH);
 		
 		
 		tableModel.setTableFrame(this);
 		add(new JScrollPane(table), BorderLayout.CENTER);
 		table.getColumnModel().getColumn(0).setCellEditor(new DefaultCellEditor(objectType));
+		table.getColumnModel().getColumn(8).setCellEditor(new DefaultCellEditor(anchorList));
 		
 		
 		// pack it all together
