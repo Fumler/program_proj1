@@ -175,7 +175,7 @@ public class TableData implements Serializable{
      * @return the anchor
      */
     public String getAnchor() {
-        return anchor;
+        return anchor.toString();
     }
     /**
      * @param anchor the anchor to set

@@ -74,7 +74,7 @@ public class CustomTableModel extends AbstractTableModel {
             data.setFill((String) value);
             break;
         case 8:
-            data.setAnchor((String) value);
+            data.setAnchor((String) value.toString());
             break;
         default:
             System.out.println(":::ERROR:: index not found");
