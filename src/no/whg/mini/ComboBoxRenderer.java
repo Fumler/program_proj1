@@ -3,20 +3,25 @@
  */
 package no.whg.mini;
 
+import java.awt.Color;
 import java.awt.Component;
 
 import javax.swing.*;
+import javax.swing.table.TableCellRenderer;
 
 /**
  * @author PeerAndreas
  *
  */
-public class ComboBoxRenderer extends JLabel implements ListCellRenderer 
+public class ComboBoxRenderer extends JLabel implements TableCellRenderer
 {
 
+	JLabel testImage;
 	ImageIcon[] tempImages;
+	ImageIcon icon;
 	public ComboBoxRenderer()
 	{
+		icon = new ImageIcon("gbleditor_icons/anchor_center.png");
 		setOpaque(true);
 		setHorizontalAlignment(CENTER);
 		setVerticalAlignment(CENTER);
@@ -27,24 +32,21 @@ public class ComboBoxRenderer extends JLabel implements ListCellRenderer
 		tempImages = temp;
 	}
 	
-	public Component getListCellRendererComponent(JList list, Object value,
-			int index, boolean isSelected, boolean cellHasFocus)
+
+	@Override
+	public Component getTableCellRendererComponent(JTable table, Object value,
+			boolean isSelected, boolean hasFocus, int row, int column) 
 	{
-		int selectedIndex = ((Integer)value).intValue();
+		
 		
 		if(isSelected)
 		{
-			setBackground(list.getSelectionBackground());
-			setForeground(list.getSelectionForeground());
-		}
-		else
-		{
-			setBackground(list.getBackground());
-			setForeground(list.getForeground());
+			setBackground(Color.red);
+			setIcon(icon);
 		}
 		
-		ImageIcon icon = tempImages[selectedIndex];
-		setIcon(icon);
+		
+		
 		
 		
 		// TODO Auto-generated method stub

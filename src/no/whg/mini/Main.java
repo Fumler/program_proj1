@@ -31,6 +31,7 @@ public class Main extends JFrame{
 	
 	private JComboBox objectType = new JComboBox(objects);
 	private JComboBox anchorList;
+	private ComboBoxRenderer renderer;
 	
 	public Main() {	
 		
@@ -64,8 +65,7 @@ public class Main extends JFrame{
 		tableModel.setTableFrame(this);
 		add(new JScrollPane(table), BorderLayout.CENTER);
 		table.getColumnModel().getColumn(0).setCellEditor(new DefaultCellEditor(objectType));
-		
-		
+		table.getColumnModel().getColumn(8).setCellRenderer(renderer);
 		
 		// pack it all together
 		pack();
@@ -82,10 +82,10 @@ public class Main extends JFrame{
 		 }
 		 
 		 anchorList = new JComboBox(imageIndex);
-		 ComboBoxRenderer renderer = new ComboBoxRenderer();
+		 renderer = new ComboBoxRenderer();
 		 renderer.setImages(images);
 		 renderer.setPreferredSize(new Dimension(20,100));
-		 anchorList.setRenderer(renderer);
+		 //anchorList.setRenderer(renderer);
 		 anchorList.setMaximumRowCount(15);
 	};
 
