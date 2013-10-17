@@ -4,11 +4,20 @@
 package no.whg.mini;
 
 import java.awt.BorderLayout;
-
-
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-import javax.swing.*;
+import javax.swing.DefaultCellEditor;
+import javax.swing.ImageIcon;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JMenuItem;
+import javax.swing.JPopupMenu;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
 
 /**
  * The Main class, connects all the "dots" together to become a full program, that
@@ -16,7 +25,7 @@ import javax.swing.*;
  * @author Fredrik, Peer
  *
  */
-public class Main extends JFrame{
+public class Main extends JFrame implements ActionListener {
 	private CustomTableModel tableModel = new CustomTableModel();
 	ImageIcon[] images;
 	Integer[] imageIndex;
@@ -32,6 +41,10 @@ public class Main extends JFrame{
 	private JComboBox objectType = new JComboBox(objects);
 	private JComboBox anchorList;
 	private ComboBoxRenderer renderer;
+	private JPopupMenu popup = new JPopupMenu();
+	private JMenuItem showSettings = new JMenuItem("Show properties for this object");
+	private JMenuItem removeRow = new JMenuItem("Remove current row");
+	private JMenuItem removeAll = new JMenuItem("Remove all rows");
 	
 	public Main() {	
 		
@@ -61,15 +74,38 @@ public class Main extends JFrame{
 		// add the toolbar below the menu bar
 		add(new Toolbar(tableModel), BorderLayout.NORTH);
 		
+		showSettings.addActionListener(this);
+		removeAll.addActionListener(this);
+		removeRow.addActionListener(this);
+		
+		popup.add(showSettings);
+		popup.add(removeRow);
+		popup.add(removeAll);
+		
 		
 		tableModel.setTableFrame(this);
 		add(new JScrollPane(table), BorderLayout.CENTER);
 		table.getColumnModel().getColumn(0).setCellEditor(new DefaultCellEditor(objectType));
 		table.getColumnModel().getColumn(8).setCellEditor(new DefaultCellEditor(anchorList));
+		table.setComponentPopupMenu(popup);
+		table.addMouseListener(new TableMouseListener(table));
 		tableModel.setTable(table);
+		
 		
 		// pack it all together
 		pack();
+	}
+	
+
+
+	/**
+	 * @param args The variables that are sent with the "java" command
+	 */
+	public static void main(String[] args) {
+		// set the locale
+		//Messages.setLocale(args[0], args[1]);
+		new Main();
+		
 	}
 	
 	public void createImages()
@@ -89,15 +125,17 @@ public class Main extends JFrame{
 		 anchorList.setRenderer(renderer);
 		 anchorList.setMaximumRowCount(3);
 	};
-
-	/**
-	 * @param args The variables that are sent with the "java" command
-	 */
-	public static void main(String[] args) {
-		// set the locale
-		//Messages.setLocale(args[0], args[1]);
-		new Main();
-		
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+        JMenuItem menu = (JMenuItem) e.getSource();
+        if (menu == showSettings) {
+            // TODO: open settings for object
+        } else if (menu == removeRow) {
+            tableModel.deleteRow(table.getSelectedRow());
+        } else if (menu == removeAll) {
+            tableModel.delete();
+        }
 	}
 
 }
