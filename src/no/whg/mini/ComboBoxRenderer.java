@@ -39,7 +39,6 @@ public class ComboBoxRenderer extends JLabel implements ListCellRenderer, TableC
 			int index, boolean isSelected, boolean hasFocus)
 	{
 		int selectedIndex = ((Integer)value).intValue();
-		value = alignmentConstraints[selectedIndex];
 		
 		if(isSelected)
 		{
@@ -53,8 +52,6 @@ public class ComboBoxRenderer extends JLabel implements ListCellRenderer, TableC
 		}
 		
 		icon = tempImages[selectedIndex];
-		alignment = alignmentConstraints[selectedIndex];
-		setText(alignment);
 		setIcon(icon);
 		
 		// TODO Auto-generated method stub
