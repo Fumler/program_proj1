@@ -66,7 +66,7 @@ public class Main extends JFrame{
 		add(new JScrollPane(table), BorderLayout.CENTER);
 		table.getColumnModel().getColumn(0).setCellEditor(new DefaultCellEditor(objectType));
 		table.getColumnModel().getColumn(8).setCellEditor(new DefaultCellEditor(anchorList));
-		
+		tableModel.setTable(table);
 		
 		// pack it all together
 		pack();
