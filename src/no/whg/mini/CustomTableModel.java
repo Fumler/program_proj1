@@ -4,10 +4,9 @@
 package no.whg.mini;
 
 import java.awt.Toolkit;
-import java.util.ArrayList;
-import javax.swing.ImageIcon;
 import java.util.Vector;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JTable;
 import javax.swing.table.AbstractTableModel;
@@ -79,7 +78,7 @@ public class CustomTableModel extends AbstractTableModel {
             data.setFill((String) value);
             break;
         case 8:
-            data.setAnchor(value);
+            data.setAnchor((ImageIcon)value);
             break;
         default:
             System.out.println(":::ERROR:: index not found");
@@ -179,6 +178,12 @@ public class CustomTableModel extends AbstractTableModel {
     }
     
     public void delete() {
+    	int rows = getRowCount();
+    	for (int i = 0; i < rows; i++) {
+    		 dataVector.remove(0);
+    		 System.out.println("SIZE: " + dataVector.size());
+    	}
+    	fireTableRowsDeleted(0, rows);
     	
     }
 
