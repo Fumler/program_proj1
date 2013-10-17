@@ -60,12 +60,13 @@ public class Main extends JFrame{
 		
 		// add the toolbar below the menu bar
 		add(new Toolbar(tableModel), BorderLayout.NORTH);
+		add(anchorList, BorderLayout.SOUTH);
 		
 		
 		tableModel.setTableFrame(this);
 		add(new JScrollPane(table), BorderLayout.CENTER);
 		table.getColumnModel().getColumn(0).setCellEditor(new DefaultCellEditor(objectType));
-		table.getColumnModel().getColumn(8).setCellRenderer(renderer);
+		
 		
 		// pack it all together
 		pack();
@@ -85,8 +86,8 @@ public class Main extends JFrame{
 		 renderer = new ComboBoxRenderer();
 		 renderer.setImages(images);
 		 renderer.setPreferredSize(new Dimension(20,100));
-		 //anchorList.setRenderer(renderer);
-		 anchorList.setMaximumRowCount(15);
+		 anchorList.setRenderer(renderer);
+		 anchorList.setMaximumRowCount(3);
 	};
 
 	/**

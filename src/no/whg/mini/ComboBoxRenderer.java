@@ -13,7 +13,7 @@ import javax.swing.table.TableCellRenderer;
  * @author PeerAndreas
  *
  */
-public class ComboBoxRenderer extends JLabel implements TableCellRenderer
+public class ComboBoxRenderer extends JLabel implements ListCellRenderer
 {
 
 	JLabel testImage;
@@ -31,23 +31,27 @@ public class ComboBoxRenderer extends JLabel implements TableCellRenderer
 	{
 		tempImages = temp;
 	}
-	
+		
 
 	@Override
-	public Component getTableCellRendererComponent(JTable table, Object value,
-			boolean isSelected, boolean hasFocus, int row, int column) 
+	public Component getListCellRendererComponent(JList list, Object value,
+			int index, boolean isSelected, boolean hasFocus)
 	{
-		
+		int selectedIndex = ((Integer)value).intValue();
 		
 		if(isSelected)
 		{
-			setBackground(Color.red);
-			setIcon(icon);
+			setBackground(list.getSelectionBackground());
+			setForeground(list.getSelectionForeground());
+		}
+		else
+		{
+			setBackground(list.getBackground());
+			setBackground(list.getForeground());
 		}
 		
-		
-		
-		
+		icon = tempImages[selectedIndex];
+		setIcon(icon);
 		
 		// TODO Auto-generated method stub
 		return this;
