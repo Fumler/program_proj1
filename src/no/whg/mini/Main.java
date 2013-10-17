@@ -21,9 +21,9 @@ public class Main extends JFrame{
 	ImageIcon[] images;
 	Integer[] imageIndex;
 	private JTable table = new JTable(tableModel);
-	private String[] imagePath = {"anchor_center_shifted.png", "anchor_center.png", "anchor_east_shifted.png", "anchor_east.png",
-			"anchor_north_shifted.png", "anchor_north.png", "anchor_northeast_shifted.png", "anchor_northeast.png", "anchor_northwest.png",
-			"anchor_south_shifted.png", "anchor_south.png", "anchor_southeast_shifted.png", "anchor_southeast.png", "anchor_southwest.png",
+	private String[] imagePath = { "anchor_center.png",  "anchor_east.png",
+			 "anchor_north.png", "anchor_northeast.png", "anchor_northwest.png",
+			 "anchor_south.png",  "anchor_southeast.png", "anchor_southwest.png",
 			"anchor_west.png"};
 	private String[] objects = {"JLabel", "JButton", "JTextField", "JTextArea", 
 			"JCheckBox", "JList", "JComboBox", "JSpinnerList", "JSpinnerNumber"
@@ -85,7 +85,7 @@ public class Main extends JFrame{
 		 anchorList = new JComboBox(imageIndex);
 		 renderer = new ComboBoxRenderer();
 		 renderer.setImages(images);
-		 renderer.setPreferredSize(new Dimension(20,100));
+		 renderer.setPreferredSize(new Dimension(10,100));
 		 anchorList.setRenderer(renderer);
 		 anchorList.setMaximumRowCount(3);
 	};
