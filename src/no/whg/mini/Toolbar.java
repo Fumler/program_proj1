@@ -228,7 +228,7 @@ public class Toolbar extends JToolBar implements ActionListener, ItemListener
 		}
 		else if(e.getActionCommand() == "rowUp")
 		{
-			
+			tableModel.moveRowUp();
 		}
 		else if(e.getActionCommand() == "help")
 		{

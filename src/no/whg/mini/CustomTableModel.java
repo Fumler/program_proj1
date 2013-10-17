@@ -3,9 +3,11 @@
  */
 package no.whg.mini;
 
+import java.util.ArrayList;
 import java.util.Vector;
 
 import javax.swing.JFrame;
+import javax.swing.JTable;
 import javax.swing.table.AbstractTableModel;
 
 /**
@@ -18,6 +20,7 @@ public class CustomTableModel extends AbstractTableModel {
 
     private Vector<TableData> dataVector = new Vector<TableData>();
     JFrame mainFrame;
+    private JTable table;
 
     public static final String[] columns = { 
         Messages.getString("Table.type"), // 0
@@ -130,11 +133,33 @@ public class CustomTableModel extends AbstractTableModel {
         return columns.length;
     }
     
+    public void setTable(JTable table) {
+    	this.table = table;
+    }
+    
     public void moveRowUp() {
+    	int row = table.getSelectedRow();
+    	System.out.println(row);
+    	TableData data = dataVector.get(row);
+    	TableData dataAbove = dataVector.get(row-1);
+    	
+  
+    	dataVector.remove(row-1);
+        dataVector.add(row-1, data);
+        dataVector.remove(row);
+        dataVector.add(row, dataAbove);
+   
+    	
+    	
+    	
+    	
+
     	
     }
 
     public void moveRowDown() {
+    	int row = table.getSelectedRow();
+    	TableData data = dataVector.get(row);
     	
     }
     
