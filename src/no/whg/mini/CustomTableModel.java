@@ -26,6 +26,7 @@ public class CustomTableModel extends AbstractTableModel {
 	private Vector<TableData> dataVector = new Vector<TableData>();
     JFrame mainFrame;
     private JTable table;
+    public GeneratingScripts scriptGen;
 
     public static final String[] columns = { 
         Messages.getString("Table.type"), // 0
@@ -194,6 +195,11 @@ public class CustomTableModel extends AbstractTableModel {
     public void deleteRow(int row) {
     	dataVector.remove(row);
     	fireTableRowsDeleted(row, row);
+    }
+    
+    public void startGeneration()
+    {
+    	scriptGen = new GeneratingScripts(dataVector);
     }
 
 }
