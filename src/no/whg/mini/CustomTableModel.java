@@ -19,7 +19,11 @@ import javax.swing.table.AbstractTableModel;
  */
 public class CustomTableModel extends AbstractTableModel {
 
-    private Vector<TableData> dataVector = new Vector<TableData>();
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private Vector<TableData> dataVector = new Vector<TableData>();
     JFrame mainFrame;
     private JTable table;
 
@@ -185,6 +189,11 @@ public class CustomTableModel extends AbstractTableModel {
     	}
     	fireTableRowsDeleted(0, rows);
     	
+    }
+    
+    public void deleteRow(int row) {
+    	dataVector.remove(row);
+    	fireTableRowsDeleted(row, row);
     }
 
 }
