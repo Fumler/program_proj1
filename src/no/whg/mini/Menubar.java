@@ -123,6 +123,7 @@ public class Menubar extends JMenuBar implements ActionListener, ItemListener
 				 
 				if(currentFile != null)
 				{
+					tableModel.delete();
 					try 
 					{
 						FileOutputStream fileOutput = new FileOutputStream(currentFile);	//create a file output stream
