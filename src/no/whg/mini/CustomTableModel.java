@@ -75,7 +75,7 @@ public class CustomTableModel extends AbstractTableModel {
             data.setColumns((String) value);
             break;
         case 7:
-            data.setFill((String) value);
+            data.setFill((String) value.toString());
             break;
         case 8:
             data.setAnchor(value.toString());
