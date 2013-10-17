@@ -20,9 +20,12 @@ public class Menubar extends JMenuBar implements ActionListener, ItemListener
 {
 	String currentDirectory = null;
 	File currentFile = null;
+	CustomTableModel tableModel;
 	
-	public Menubar()
+	public Menubar(CustomTableModel tableModel)
 	{
+		
+		this.tableModel = tableModel;
 		JMenuBar menuBar = new JMenuBar();	//the menubar that holds the menu
 		JMenu menu;	//an object of JMenu
 		JMenuItem menuItem;	//an object of JMenuItem
@@ -237,6 +240,9 @@ public class Menubar extends JMenuBar implements ActionListener, ItemListener
 		else if(e.getActionCommand() == "exit")
 		{
 			System.exit(0);	//exit program
+		}
+		else if(e.getActionCommand() == "newRow") {
+			tableModel.addRow();
 		}
 		
 	}

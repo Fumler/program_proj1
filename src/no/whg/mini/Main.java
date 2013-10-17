@@ -55,7 +55,7 @@ public class Main extends JFrame{
 		createImages();
 		
 		// add the menu bar at the top
-		setJMenuBar(new Menubar());
+		setJMenuBar(new Menubar(tableModel));
 		
 		// add the toolbar below the menu bar
 		add(new Toolbar(tableModel), BorderLayout.NORTH);

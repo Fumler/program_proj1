@@ -129,6 +129,25 @@ public class CustomTableModel extends AbstractTableModel {
     public int getColumnCount() {
         return columns.length;
     }
+    
+    public void moveRowUp() {
+    	
+    }
 
+    public void moveRowDown() {
+    	
+    }
+    
+    public void save() {
+    	
+    }
+    
+    public void load() {
+    	
+    }
+    
+    public void delete() {
+    	
+    }
 
 }
