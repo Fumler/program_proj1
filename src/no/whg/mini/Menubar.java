@@ -228,7 +228,7 @@ public class Menubar extends JMenuBar implements ActionListener, ItemListener
 		}
 		else if(e.getActionCommand() == "generate")
 		{
-			
+			tableModel.startGeneration();
 		}
 		else if(e.getActionCommand() == "exit")
 		{

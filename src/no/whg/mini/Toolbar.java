@@ -215,7 +215,7 @@ public class Toolbar extends JToolBar implements ActionListener, ItemListener
 		}
 		else if(e.getActionCommand() == "generate")
 		{
-			
+			tableModel.startGeneration();
 		}
 		else if(e.getActionCommand() == "run")
 		{
