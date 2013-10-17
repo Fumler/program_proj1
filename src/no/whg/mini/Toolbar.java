@@ -8,7 +8,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
-import java.io.*;
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.Vector;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -128,11 +136,9 @@ public class Toolbar extends JToolBar implements ActionListener, ItemListener
 					tableModel.delete();
 					try 
 					{
-						FileOutputStream fileOutput = new FileOutputStream(currentFile);	//create a file output stream
-						ObjectOutputStream objectOutput = new ObjectOutputStream(fileOutput);	//create a object output stream for the file
-						objectOutput.writeObject(null);	//write to the output stream
-						objectOutput.close();	//close the output stream
-						fileOutput.close();	//close the file output
+						final ObjectOutputStream out = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(currentFile)));
+						out.writeObject(null);
+						out.close();
 					}
 					catch (IOException e1)
 					{
@@ -155,11 +161,12 @@ public class Toolbar extends JToolBar implements ActionListener, ItemListener
 				{
 					try
 					{
-						FileInputStream fileInput = new FileInputStream(currentFile);	//create a file input stream
-						ObjectInputStream inputObject = new ObjectInputStream(fileInput);	//create an object input from the file
-						inputObject.readObject();	//read the input stream
-						inputObject.close();	//close the input stream
-						fileInput.close();	//close the file input
+						
+						final ObjectInputStream in = new ObjectInputStream(
+						        new BufferedInputStream(new FileInputStream(currentFile)));
+
+						    final Vector<TableData> data = (Vector<TableData>) in.readObject();
+						    tableModel.load(data);
 					}
 					catch(IOException | ClassNotFoundException e1)
 					{
@@ -172,13 +179,12 @@ public class Toolbar extends JToolBar implements ActionListener, ItemListener
 		{
 			if(currentFile != null) //as long as there is a file to save
 			{
+				
 				try 
 				{
-					FileOutputStream fileOutput = new FileOutputStream(currentFile);	//create a file output
-					ObjectOutputStream objectOutput = new ObjectOutputStream(fileOutput);	//create an object output from the stream
-					objectOutput.writeObject(null);	//write to the object output stream
-					objectOutput.close();	//closer the object output stream
-					fileOutput.close();	//close the file stream
+					final ObjectOutputStream out = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(currentFile)));
+					out.writeObject(tableModel.save());
+					out.close();
 				}
 				catch (IOException e1)
 				{
@@ -195,12 +201,10 @@ public class Toolbar extends JToolBar implements ActionListener, ItemListener
 					currentFile = saveAsWindow.getSelectedFile();	//get the file selected by the user
 					
 					try
-					{
-						FileOutputStream fileOutput = new FileOutputStream(currentFile);	//create a file output stream
-						ObjectOutputStream objectOutput = new ObjectOutputStream(fileOutput);	//create an object output stream
-						objectOutput.writeObject(null);	//write to the object output stream
-						objectOutput.close();	//close the object output stream
-						fileOutput.close();	//close the file stream
+					{	
+						final ObjectOutputStream out = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(currentFile)));
+						out.writeObject(tableModel.save());
+						out.close();
 					}
 					catch (IOException e1)
 					{

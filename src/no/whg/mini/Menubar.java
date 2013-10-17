@@ -126,11 +126,9 @@ public class Menubar extends JMenuBar implements ActionListener, ItemListener
 					tableModel.delete();
 					try 
 					{
-						FileOutputStream fileOutput = new FileOutputStream(currentFile);	//create a file output stream
-						ObjectOutputStream objectOutput = new ObjectOutputStream(fileOutput);	//create a object output stream for the file
-						objectOutput.writeObject(null);	//write to the output stream
-						objectOutput.close();	//close the output stream
-						fileOutput.close();	//close the file output
+						final ObjectOutputStream out = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(currentFile)));
+						out.writeObject(null);
+						out.close();
 					}
 					catch (IOException e1)
 					{
@@ -172,11 +170,9 @@ public class Menubar extends JMenuBar implements ActionListener, ItemListener
 			{
 				try 
 				{
-					FileOutputStream fileOutput = new FileOutputStream(currentFile);	//create a file output stream
-					ObjectOutputStream objectOutput = new ObjectOutputStream(fileOutput);	//create a object output stream for the file
-					objectOutput.writeObject(null);	//write to the output stream
-					objectOutput.close();	//close the output stream
-					fileOutput.close();	//close the file output
+					final ObjectOutputStream out = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(currentFile)));
+					out.writeObject(tableModel.save());
+					out.close();
 				}
 				catch (IOException e1)
 				{
@@ -194,11 +190,9 @@ public class Menubar extends JMenuBar implements ActionListener, ItemListener
 					
 					try 
 					{
-						FileOutputStream fileOutput = new FileOutputStream(currentFile);	//create a file output stream
-						ObjectOutputStream objectOutput = new ObjectOutputStream(fileOutput);	//create an object output stream to the file
-						objectOutput.writeObject(null);	//write to the output stream
-						objectOutput.close();	//close the output stream
-						fileOutput.close();	//close the file output
+						final ObjectOutputStream out = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(currentFile)));
+						out.writeObject(tableModel.save());
+						out.close();
 					}
 					catch (IOException e1)
 					{
@@ -218,11 +212,9 @@ public class Menubar extends JMenuBar implements ActionListener, ItemListener
 				
 				try 
 				{
-					FileOutputStream fileOutput = new FileOutputStream(currentFile);	//create a file output stream
-					ObjectOutputStream objectOutput = new ObjectOutputStream(fileOutput);	//create an object output stream from the file
-					objectOutput.writeObject(null);	//write to the output stream
-					objectOutput.close();	//close the output stream
-					fileOutput.close();	//close the file stream
+					final ObjectOutputStream out = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(currentFile)));
+					out.writeObject(tableModel.save());
+					out.close();
 				}
 				catch (IOException e1)
 				{

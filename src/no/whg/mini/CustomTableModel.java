@@ -4,9 +4,9 @@
 package no.whg.mini;
 
 import java.awt.Toolkit;
+import java.io.Serializable;
 import java.util.Vector;
 
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JTable;
 import javax.swing.table.AbstractTableModel;
@@ -17,7 +17,7 @@ import javax.swing.table.AbstractTableModel;
  * @author Fredrik
  * 
  */
-public class CustomTableModel extends AbstractTableModel {
+public class CustomTableModel extends AbstractTableModel implements Serializable {
 
     /**
 	 * 
@@ -173,12 +173,18 @@ public class CustomTableModel extends AbstractTableModel {
     	
     }
     
-    public void save() {
+    public Vector<TableData> save() {
+    	return dataVector;
     	
     }
     
-    public void load() {
+    public void load(Vector<TableData> data) {
+    	this.dataVector = data;
     	
+    	for(int i = 0; i < data.size(); i++) {
+    		fireTableRowsInserted(i, i);
+    	}
+    	//fireTableRowsInserted(dataVector.size(), dataVector.size());
     }
     
     public void delete() {
