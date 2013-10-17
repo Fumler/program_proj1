@@ -79,7 +79,7 @@ public class Main extends JFrame{
 		 for(int i = 0; i < imagePath.length; i++)
 		 {
 			 imageIndex[i] = new Integer(i);
-			 images[i] = new ImageIcon(imagePath[i]);
+			 images[i] = new ImageIcon("gbleditor_icons/"+imagePath[i]);
 		 }
 		 
 		 anchorList = new JComboBox(imageIndex);
