@@ -34,21 +34,21 @@ public class Toolbar extends JToolBar implements ActionListener, ItemListener
 		
 		ImageIcon newImage = new ImageIcon("gbleditor_icons/NEW.GIF");
 		newButton = new JButton(newImage);
-		newButton.setToolTipText("Create a new layout");
+		newButton.setToolTipText(Messages.getString("Toolbar.newToolTip"));
 		newButton.setActionCommand("new");
 		newButton.addActionListener(this);
 		add(newButton);
 		
 		ImageIcon newOpenImage = new ImageIcon("gbleditor_icons/OPENDOC.GIF");
 		newButton = new JButton(newOpenImage);	
-		newButton.setToolTipText("Open document");
+		newButton.setToolTipText(Messages.getString("Toolbar.OpenDocument"));
 		newButton.setActionCommand("open");
 		newButton.addActionListener(this);
 		add(newButton);
 		
 		ImageIcon newSaveImage = new ImageIcon("gbleditor_icons/SAVE.GIF");
 		newButton = new JButton(newSaveImage);
-		newButton.setToolTipText("Save");
+		newButton.setToolTipText(Messages.getString("Toolbar.Save"));
 		newButton.setActionCommand("save");
 		newButton.addActionListener(this);
 		add(newButton);
@@ -57,14 +57,14 @@ public class Toolbar extends JToolBar implements ActionListener, ItemListener
 		
 		ImageIcon newSaveJavaImage = new ImageIcon("gbleditor_icons/SAVEJAVA.GIF");
 		newButton = new JButton(newSaveJavaImage);
-		newButton.setToolTipText("Generate the code");
+		newButton.setToolTipText(Messages.getString("Toolbar.Generate"));
 		newButton.setActionCommand("generate");
 		newButton.addActionListener(this);
 		add(newButton);
 		
 		ImageIcon newExecuteImage = new ImageIcon("gbleditor_icons/ExecuteProject.GIF");
 		newButton = new JButton(newExecuteImage);
-		newButton.setToolTipText("Run the program");
+		newButton.setToolTipText(Messages.getString("Toolbar.Run"));
 		newButton.setActionCommand("run");
 		newButton.addActionListener(this);
 		add(newButton);
@@ -73,21 +73,21 @@ public class Toolbar extends JToolBar implements ActionListener, ItemListener
 		
 		ImageIcon newRowImage = new ImageIcon("gbleditor_icons/NEWROW.GIF");
 		newButton = new JButton(newRowImage);
-		newButton.setToolTipText("Add a new row");
+		newButton.setToolTipText(Messages.getString("Toolbar.addRow"));
 		newButton.setActionCommand("newRow");
 		newButton.addActionListener(this);
 		add(newButton);
 		
 		ImageIcon newRowDownImage = new ImageIcon("gbleditor_icons/MoveRowDown.GIF");
 		newButton = new JButton(newRowDownImage);
-		newButton.setToolTipText("Move row down");
+		newButton.setToolTipText(Messages.getString("Toolbar.rowDown"));
 		newButton.setActionCommand("rowDown");
 		newButton.addActionListener(this);
 		add(newButton);
 		
 		ImageIcon newRowUpImage = new ImageIcon("gbleditor_icons/MoveRowUp.GIF");
 		newButton = new JButton(newRowUpImage);
-		newButton.setToolTipText("Move row up");
+		newButton.setToolTipText(Messages.getString("Toolbar.rowUp"));
 		newButton.setActionCommand("rowUp");
 		newButton.addActionListener(this);
 		add(newButton);
@@ -96,7 +96,7 @@ public class Toolbar extends JToolBar implements ActionListener, ItemListener
 		
 		ImageIcon newHelpImage = new ImageIcon("gbleditor_icons/HELP.GIF");
 		newButton = new JButton(newHelpImage);
-		newButton.setToolTipText("Help");
+		newButton.setToolTipText(Messages.getString("Toolbar.help"));
 		newButton.setActionCommand("help");
 		newButton.addActionListener(this);
 		add(newButton);

@@ -27,72 +27,72 @@ public class Menubar extends JMenuBar implements ActionListener, ItemListener
 		JMenu menu;	//an object of JMenu
 		JMenuItem menuItem;	//an object of JMenuItem
 		
-		menu = new JMenu("File");	//create a menu named file
+		menu = new JMenu(Messages.getString("Menubar.File"));	//create a menu named file
 		menu.setMnemonic(KeyEvent.VK_F);
 		add(menu); //add the menu too the menubar
 		
-		menuItem = new JMenuItem("New", new ImageIcon("gbleditor_icons/NEW.GIF"));	//create an item to the menu with image
+		menuItem = new JMenuItem(Messages.getString("Menubar.New"), new ImageIcon("gbleditor_icons/NEW.GIF"));	//create an item to the menu with image
 		menuItem.addActionListener(this);
 		menuItem.setActionCommand("new");
 		menu.add(menuItem);	//add the item to the menu
 		
-		menuItem = new JMenuItem("Load", new ImageIcon("gbleditor_icons/OPENDOC.GIF"));
+		menuItem = new JMenuItem(Messages.getString("Menubar.Load"), new ImageIcon("gbleditor_icons/OPENDOC.GIF"));
 		menuItem.addActionListener(this);
 		menuItem.setActionCommand("load");
 		menu.add(menuItem);
 		
-		menuItem = new JMenuItem("Save", new ImageIcon("gbleditor_icons/SAVE.GIF"));
+		menuItem = new JMenuItem(Messages.getString("Menubar.Save"), new ImageIcon("gbleditor_icons/SAVE.GIF"));
 		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, ActionEvent.CTRL_MASK));
 		menuItem.addActionListener(this);
 		menuItem.setActionCommand("save");
 		menu.add(menuItem);
 		
-		menuItem = new JMenuItem("Save As..", new ImageIcon("gbleditor_icons/SAVE.GIF"));
+		menuItem = new JMenuItem(Messages.getString("Menubar.SaveAs"), new ImageIcon("gbleditor_icons/SAVE.GIF"));
 		menuItem.addActionListener(this);
 		menuItem.setActionCommand("saveAs");
 		menu.add(menuItem);
 		
 		menu.addSeparator();	//adds a line separator to the menu
 		
-		menuItem = new JMenuItem("Preview");	//create an item without the image
+		menuItem = new JMenuItem(Messages.getString("Menubar.Preview"));	//create an item without the image
 		menuItem.addActionListener(this);
 		menuItem.setActionCommand("preview");
 		menu.add(menuItem);	//add the item to the menu
 		
-		menuItem = new JMenuItem("Generate code", new ImageIcon("gbleditor_icons/SAVEJAVA.GIF"));
+		menuItem = new JMenuItem(Messages.getString("Menubar.Generate"), new ImageIcon("gbleditor_icons/SAVEJAVA.GIF"));
 		menuItem.addActionListener(this);
 		menuItem.setActionCommand("generate");
 		menu.add(menuItem);
 		
 		menu.addSeparator();
 		
-		menuItem = new JMenuItem("Exit");
+		menuItem = new JMenuItem(Messages.getString("Menubar.Exit"));
 		menuItem.addActionListener(this);
 		menuItem.setActionCommand("exit");
 		menu.add(menuItem);
 		
-		menu = new JMenu("Edit");	//creates a new menu next to the first
+		menu = new JMenu(Messages.getString("Menubar.Edit"));	//creates a new menu next to the first
 		add(menu);	//add it to the JMenuBar
 		
-		menuItem = new JMenuItem("Add new row", new ImageIcon("gbleditor_icons/NEWROW.GIF"));
+		menuItem = new JMenuItem(Messages.getString("Menubar.addRow"), new ImageIcon("gbleditor_icons/NEWROW.GIF"));
 		menuItem.addActionListener(this);
 		menuItem.setActionCommand("newRow");
 		menu.add(menuItem);
 		
 		menu.addSeparator();
 		
-		menuItem = new JMenuItem("Preferences");
+		menuItem = new JMenuItem(Messages.getString("Menubar.preferences"));
 		menu.add(menuItem);
 		
-		menu = new JMenu("Help");	//creates a new menu next to the two others
+		menu = new JMenu(Messages.getString("Menubar.help"));	//creates a new menu next to the two others
 		add(menu);	//add the menu to JMenuBar
 		
-		menuItem = new JMenuItem("Help", new ImageIcon("gbleditor_icons/HELP.GIF"));
+		menuItem = new JMenuItem(Messages.getString("Menubar.help"), new ImageIcon("gbleditor_icons/HELP.GIF"));
 		menuItem.addActionListener(this);
 		menuItem.setActionCommand("help");
 		menu.add(menuItem);
 		
-		menuItem = new JMenuItem("About");
+		menuItem = new JMenuItem(Messages.getString("Menubar.about"));
 		menuItem.addActionListener(this);
 		menuItem.setActionCommand("about");
 		menu.add(menuItem);
