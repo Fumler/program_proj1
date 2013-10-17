@@ -13,7 +13,7 @@ import javax.swing.table.TableCellRenderer;
  * @author PeerAndreas
  *
  */
-public class ComboBoxRenderer extends JLabel implements ListCellRenderer
+public class ComboBoxRenderer extends JLabel implements ListCellRenderer, TableCellRenderer
 {
 
 	JLabel testImage;
@@ -60,5 +60,13 @@ public class ComboBoxRenderer extends JLabel implements ListCellRenderer
 		// TODO Auto-generated method stub
 		return this;
 	}
+
+	@Override
+	public Component getTableCellRendererComponent(JTable arg0, Object arg1,
+			boolean arg2, boolean arg3, int arg4, int arg5) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }
+ 

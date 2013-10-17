@@ -4,7 +4,7 @@
 package no.whg.mini;
 
 import java.io.Serializable;
-
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 /**
@@ -22,7 +22,7 @@ public class TableData implements Serializable{
     private String rows;
     private String columns;
     private String fill;
-    private String anchor;
+    private ImageIcon anchor;
     
     public TableData() {
         type = "JButton";
@@ -33,7 +33,7 @@ public class TableData implements Serializable{
         rows = "1";
         columns = "1";
         fill = "1";
-        anchor = "1";
+        anchor = null;
     }
     
     /**
@@ -48,7 +48,7 @@ public class TableData implements Serializable{
         rows = "1";
         columns = "1";
         fill = "1";
-        anchor = "1";
+        anchor = new ImageIcon("gbleditor_icons/anchor_center.png");
     }
     /**
      * @param type
@@ -62,7 +62,7 @@ public class TableData implements Serializable{
      * @param anchor
      */
     public TableData(String type, String varName, String text, String row,
-            String column, String rows, String columns, String fill, String anchor) {
+            String column, String rows, String columns, String fill, ImageIcon anchor) {
         super();
         this.type = type;
         this.varName = varName;
@@ -174,13 +174,13 @@ public class TableData implements Serializable{
     /**
      * @return the anchor
      */
-    public String getAnchor() {
-        return anchor.toString();
+    public ImageIcon getAnchor() {
+        return anchor;
     }
     /**
      * @param anchor the anchor to set
      */
-    public void setAnchor(String anchor) {
+    public void setAnchor(ImageIcon anchor) {
         this.anchor = anchor;
     }
 

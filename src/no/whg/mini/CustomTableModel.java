@@ -4,6 +4,7 @@
 package no.whg.mini;
 
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
 import java.util.Vector;
 
 import javax.swing.JFrame;
@@ -77,7 +78,7 @@ public class CustomTableModel extends AbstractTableModel {
             data.setFill((String) value);
             break;
         case 8:
-            data.setAnchor((String) value.toString());
+            data.setAnchor(value);
             break;
         default:
             System.out.println(":::ERROR:: index not found");
