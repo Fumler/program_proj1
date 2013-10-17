@@ -14,6 +14,7 @@ import javax.swing.*;
 public class ComboBoxRenderer extends JLabel implements ListCellRenderer 
 {
 
+	ImageIcon[] tempImages;
 	public ComboBoxRenderer()
 	{
 		setOpaque(true);
@@ -21,10 +22,33 @@ public class ComboBoxRenderer extends JLabel implements ListCellRenderer
 		setVerticalAlignment(CENTER);
 	}
 	
+	public void setImages(ImageIcon[] temp)
+	{
+		tempImages = temp;
+	}
+	
 	public Component getListCellRendererComponent(JList list, Object value,
-			int index, boolean isSelected, boolean cellHasFocus) {
+			int index, boolean isSelected, boolean cellHasFocus)
+	{
+		int selectedIndex = ((Integer)value).intValue();
+		
+		if(isSelected)
+		{
+			setBackground(list.getSelectionBackground());
+			setForeground(list.getSelectionForeground());
+		}
+		else
+		{
+			setBackground(list.getBackground());
+			setForeground(list.getForeground());
+		}
+		
+		ImageIcon icon = tempImages[selectedIndex];
+		setIcon(icon);
+		
+		
 		// TODO Auto-generated method stub
-		return null;
+		return this;
 	}
 	
 }

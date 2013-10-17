@@ -6,6 +6,8 @@ package no.whg.mini;
 import java.awt.BorderLayout;
 
 
+import java.awt.Dimension;
+
 import javax.swing.*;
 
 /**
@@ -14,7 +16,7 @@ import javax.swing.*;
  * @author Fredrik, Peer
  *
  */
-public class Main extends JFrame {
+public class Main extends JFrame{
 	private CustomTableModel tableModel = new CustomTableModel();
 	ImageIcon[] images;
 	Integer[] imageIndex;
@@ -28,6 +30,7 @@ public class Main extends JFrame {
 	};
 	
 	private JComboBox objectType = new JComboBox(objects);
+	private JComboBox anchorList;
 	
 	public Main() {	
 		
@@ -63,6 +66,7 @@ public class Main extends JFrame {
 		table.getColumnModel().getColumn(0).setCellEditor(new DefaultCellEditor(objectType));
 		
 		
+		
 		// pack it all together
 		pack();
 	}
@@ -77,7 +81,12 @@ public class Main extends JFrame {
 			 images[i] = new ImageIcon(imagePath[i]);
 		 }
 		 
-		 JComboBox anchorList = new JComboBox(imageIndex);
+		 anchorList = new JComboBox(imageIndex);
+		 ComboBoxRenderer renderer = new ComboBoxRenderer();
+		 renderer.setImages(images);
+		 renderer.setPreferredSize(new Dimension(20,100));
+		 anchorList.setRenderer(renderer);
+		 anchorList.setMaximumRowCount(15);
 	};
 
 	/**

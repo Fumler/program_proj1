@@ -116,7 +116,30 @@ public class Toolbar extends JToolBar implements ActionListener, ItemListener
 	{
 		if(e.getActionCommand() == "new")
 		{
+			JFileChooser newWindow = new JFileChooser();
+			int rVal = newWindow.showSaveDialog(Toolbar.this);
 			
+			if(rVal == JFileChooser.APPROVE_OPTION)
+			{
+				currentFile = newWindow.getSelectedFile();
+				 
+				if(currentFile != null)
+				{
+					try 
+					{
+						FileOutputStream fileOutput = new FileOutputStream(currentFile);	//create a file output stream
+						ObjectOutputStream objectOutput = new ObjectOutputStream(fileOutput);	//create a object output stream for the file
+						objectOutput.writeObject(null);	//write to the output stream
+						objectOutput.close();	//close the output stream
+						fileOutput.close();	//close the file output
+					}
+					catch (IOException e1)
+					{
+						e1.printStackTrace();
+					}					
+				}
+				
+			}	
 		}
 		else if(e.getActionCommand() == "open")
 		{
