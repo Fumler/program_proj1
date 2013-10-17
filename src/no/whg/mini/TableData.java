@@ -22,7 +22,7 @@ public class TableData implements Serializable{
     private String rows;
     private String columns;
     private String fill;
-    private ImageIcon anchor;
+    private String anchor;
     
     public TableData() {
         type = "JButton";
@@ -33,7 +33,7 @@ public class TableData implements Serializable{
         rows = "1";
         columns = "1";
         fill = "1";
-        anchor = null;
+        anchor = "";
     }
     
     /**
@@ -48,7 +48,7 @@ public class TableData implements Serializable{
         rows = "1";
         columns = "1";
         fill = "1";
-        anchor = new ImageIcon("gbleditor_icons/anchor_center.png");
+        anchor = "";
     }
     /**
      * @param type
@@ -62,7 +62,7 @@ public class TableData implements Serializable{
      * @param anchor
      */
     public TableData(String type, String varName, String text, String row,
-            String column, String rows, String columns, String fill, ImageIcon anchor) {
+            String column, String rows, String columns, String fill, String anchor) {
         super();
         this.type = type;
         this.varName = varName;
@@ -174,13 +174,13 @@ public class TableData implements Serializable{
     /**
      * @return the anchor
      */
-    public ImageIcon getAnchor() {
+    public String getAnchor() {
         return anchor;
     }
     /**
      * @param anchor the anchor to set
      */
-    public void setAnchor(ImageIcon anchor) {
+    public void setAnchor(String anchor) {
         this.anchor = anchor;
     }
 

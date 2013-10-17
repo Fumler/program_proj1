@@ -28,19 +28,24 @@ import javax.swing.UIManager;
 public class Main extends JFrame implements ActionListener {
 	private CustomTableModel tableModel = new CustomTableModel();
 	ImageIcon[] images;
+	ImageIcon[] fillImages;
 	Integer[] imageIndex;
+	Integer[] imageFillIndex;
 	private JTable table = new JTable(tableModel);
 	private String[] imagePath = { "anchor_center.png",  "anchor_east.png",
 			 "anchor_north.png", "anchor_northeast.png", "anchor_northwest.png",
 			 "anchor_south.png",  "anchor_southeast.png", "anchor_southwest.png",
 			"anchor_west.png"};
+	private String[] fillImagesPath = { "skaler_begge.png", "skaler_horisontalt.png", "skaler_ingen.png", "skaler_vertikalt.png"};
 	private String[] objects = {"JLabel", "JButton", "JTextField", "JTextArea", 
 			"JCheckBox", "JList", "JComboBox", "JSpinnerList", "JSpinnerNumber"
 	};
 	
 	private JComboBox objectType = new JComboBox(objects);
 	private JComboBox anchorList;
+	private JComboBox fillList;
 	private ComboBoxRenderer renderer;
+	private ComboBoxRenderer fillRenderer;
 	private JPopupMenu popup = new JPopupMenu();
 	private JMenuItem showSettings = new JMenuItem("Show properties for this object");
 	private JMenuItem removeRow = new JMenuItem("Remove current row");
@@ -67,6 +72,7 @@ public class Main extends JFrame implements ActionListener {
 		}
 		
 		createImages();
+		createFillImages();
 		
 		// add the menu bar at the top
 		setJMenuBar(new Menubar(tableModel));
@@ -87,6 +93,7 @@ public class Main extends JFrame implements ActionListener {
 		add(new JScrollPane(table), BorderLayout.CENTER);
 		table.getColumnModel().getColumn(0).setCellEditor(new DefaultCellEditor(objectType));
 		table.getColumnModel().getColumn(8).setCellEditor(new DefaultCellEditor(anchorList));
+		table.getColumnModel().getColumn(7).setCellEditor(new DefaultCellEditor(fillList));
 		table.setComponentPopupMenu(popup);
 		table.addMouseListener(new TableMouseListener(table));
 		tableModel.setTable(table);
@@ -116,6 +123,7 @@ public class Main extends JFrame implements ActionListener {
 		 {
 			 imageIndex[i] = new Integer(i);
 			 images[i] = new ImageIcon("gbleditor_icons/"+imagePath[i]);
+			 System.out.println(images[i]);
 		 }
 		 
 		 anchorList = new JComboBox(imageIndex);
@@ -125,6 +133,26 @@ public class Main extends JFrame implements ActionListener {
 		 anchorList.setRenderer(renderer);
 		 anchorList.setMaximumRowCount(3);
 	};
+	
+	public void createFillImages()
+	{
+		fillImages = new ImageIcon[fillImagesPath.length];
+		imageFillIndex = new Integer[fillImagesPath.length];
+		
+		for(int i = 0; i < fillImagesPath.length;i++)
+		{
+			imageFillIndex[i] = new Integer(i);
+			fillImages[i] = new ImageIcon("gbleditor_icons/"+fillImagesPath[i]);
+			System.out.println(fillImages[i]);
+		}
+		
+		fillList = new JComboBox(imageFillIndex);
+		fillRenderer = new ComboBoxRenderer();
+		fillRenderer.setImages(fillImages);
+		fillRenderer.setPreferredSize(new Dimension(10,100));
+		fillList.setRenderer(fillRenderer);
+		fillList.setMaximumRowCount(3);
+	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
