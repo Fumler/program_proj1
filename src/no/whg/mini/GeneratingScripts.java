@@ -27,7 +27,7 @@ public class GeneratingScripts {
 		+ "extends JPanel{");
 	}
 	
-	public void generate()
+	public String generate()
 	{
 		for(int i = 0; i < generatingVector.size(); i++)
 		{
@@ -104,5 +104,6 @@ public class GeneratingScripts {
 		}
 		
 		longAssString += "}}";
+		return longAssString;
 	}
 }
