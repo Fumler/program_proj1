@@ -58,7 +58,7 @@ public class Main extends JFrame implements ActionListener {
 		// tell application to close on exit, instead of hide on exit
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		// set the default size
-		setSize(400, 400);
+		setSize(1000, 1000);
 		// set the initial position of window to center
 		setLocationRelativeTo(null);
 		// show the frame
