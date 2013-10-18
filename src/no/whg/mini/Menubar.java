@@ -38,7 +38,7 @@ public class Menubar extends JMenuBar implements ActionListener, ItemListener
 	
 	/**
 	 * 
-	 * @param tableModel the table that holds the GridBagLayout
+	 * @param tableModel the table that holds the GridBagLayout items
 	 */
 	public Menubar(CustomTableModel tableModel)
 	{
@@ -125,6 +125,9 @@ public class Menubar extends JMenuBar implements ActionListener, ItemListener
 		
 	}
 
+	/**
+	 * the function that checks if the user has pressed any buttons on the menubar
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) 
 	{

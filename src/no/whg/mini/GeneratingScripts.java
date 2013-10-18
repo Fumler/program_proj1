@@ -47,7 +47,7 @@ public class GeneratingScripts {
 	public String generate()
 	{
 		for(int i = 0; i < generatingVector.size(); i++)
-		 {
+		 {	//get the info from the vectors current element that is relevant for writing the code
 			TableData currentRow = generatingVector.elementAt(i);
 			String currentType = currentRow.getType();
 			String varName = currentRow.getVarName();
@@ -62,6 +62,7 @@ public class GeneratingScripts {
 			float optionsStartValue = currentRow.getOptionsStartValue();
 			float optionsStepValue = currentRow.getOptionsStepValue();
 			
+			//checks type classification
 			if(currentType == "JLabel")
 			{
 				longAssString += "JLabel " + varName + " = new JLabel(\"" + text +"\");\n";  
@@ -157,7 +158,7 @@ public class GeneratingScripts {
 				if(scrollPane)
 				{
 					longAssString += "JScrollPane " + name + "ScrollPane = new ScrollPane(" + name + ");\n"
-							+ name + "ScrollPane.setPreferredSize(new jawa.awt.Dimension(" + optionsWidth + "," + optionsHeight + "));\n";
+							+ name + "ScrollPane.setPreferredSize(new java.awt.Dimension(" + optionsWidth + "," + optionsHeight + "));\n";
 				}
 			}
 			else if(type == "JTextField")
@@ -178,18 +179,18 @@ public class GeneratingScripts {
 			longAssString += "gbc.gridy = " + column + ";\n";
 			longAssString += "gbc.gridwidth = " + rows + ";\n";
 			longAssString += "gbc.gridheight = " + columns + ";\n";
-			longAssString += "gbc.anchor = jawa.awt.GridBagConstraints." + anchor + ";\n";
-			longAssString += "gbc.fill = jawa.awt.GridBagConstraints." + fill + ";\n";
+			longAssString += "gbc.anchor = java.awt.GridBagConstraints." + anchor + ";\n";
+			longAssString += "gbc.fill = java.awt.GridBagConstraints." + fill + ";\n";
 			
 			if(scrollPane)
 			{
-				longAssString += "layout.SetConstraints(" + name + "ScrollPane, gbc);\n";
+				longAssString += "layout.setConstraints(" + name + "ScrollPane, gbc);\n";
 				longAssString += "add(" + name + "ScrollPane);\n";
 				
 			}
 			else
 			{
-				longAssString += "layout.SetConstraints(" + name + ", gbc);\n";
+				longAssString += "layout.setConstraints(" + name + ", gbc);\n";
 				longAssString += "add(" + name + ");\n";
 			}
 		}

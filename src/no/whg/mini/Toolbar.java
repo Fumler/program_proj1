@@ -35,6 +35,10 @@ public class Toolbar extends JToolBar implements ActionListener, ItemListener
 	private CustomTableModel tableModel;
 	File currentFile;
 	
+	/**
+	 * 
+	 * @param tableModel the model that holds the vector that holds all the data objects
+	 */
 	public Toolbar(CustomTableModel tableModel)
 	{
 		this.tableModel = tableModel;
@@ -121,7 +125,10 @@ public class Toolbar extends JToolBar implements ActionListener, ItemListener
 	{
 		
 	}
-
+	
+	/**
+	 * function that checks if the user has pressed any buttons on the toolbar
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) 
 	{
