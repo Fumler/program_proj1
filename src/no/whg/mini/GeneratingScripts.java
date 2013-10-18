@@ -11,16 +11,27 @@ import java.util.Vector;
  *
  */
 public class GeneratingScripts {
-	
+	/**
+	 * Class that generates the string that is printed to a file
+	 * 
+	 */
 	private Vector<TableData> generatingVector;
 	public String longAssString;
 	private String className;
 	
+	/**
+	 * Empty constructor
+	 */
 	public GeneratingScripts()
 	{
 		
 	}
 	
+	/**
+	 * 
+	 * @param genVec the vector that holds the items in a table
+	 * @param className holds the name of the class
+	 */
 	public GeneratingScripts(Vector<TableData> genVec, String className)
 	{
 		this.className = className;
@@ -29,6 +40,10 @@ public class GeneratingScripts {
 		+ " extends JPanel{");
 	}
 	
+	/**
+	 *  function that generates the entire string from the vector of table data
+	 * @return the string that will be written to file
+	 */
 	public String generate()
 	{
 		for(int i = 0; i < generatingVector.size(); i++)

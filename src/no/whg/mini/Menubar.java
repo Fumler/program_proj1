@@ -16,12 +16,18 @@ import javax.swing.*;
  * @author PeerAndreas
  *
  */
+
+
 public class Menubar extends JMenuBar implements ActionListener, ItemListener
 {
 	String currentDirectory = null;
 	File currentFile = null;
 	CustomTableModel tableModel;
 	
+	/**
+	 * 
+	 * @param tableModel the table that holds the GridBagLayout
+	 */
 	public Menubar(CustomTableModel tableModel)
 	{
 		
