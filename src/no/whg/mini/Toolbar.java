@@ -29,6 +29,7 @@ import javax.swing.JToolBar;
  * @author Fredrik, Peer
  *
  */
+@SuppressWarnings("serial")
 public class Toolbar extends JToolBar implements ActionListener, ItemListener
 {
 	private CustomTableModel tableModel;
@@ -164,10 +165,12 @@ public class Toolbar extends JToolBar implements ActionListener, ItemListener
 					try
 					{
 						
+						@SuppressWarnings("resource")
 						final ObjectInputStream in = new ObjectInputStream(
 						        new BufferedInputStream(new FileInputStream(currentFile)));
 
-						    final Vector<TableData> data = (Vector<TableData>) in.readObject();
+						    @SuppressWarnings("unchecked")
+							final Vector<TableData> data = (Vector<TableData>) in.readObject();
 						    tableModel.load(data);
 					}
 					catch(IOException | ClassNotFoundException e1)
