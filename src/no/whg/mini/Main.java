@@ -25,6 +25,7 @@ import javax.swing.UIManager;
  * @author Fredrik, Peer
  *
  */
+@SuppressWarnings("serial")
 public class Main extends JFrame implements ActionListener {
 	private CustomTableModel tableModel = new CustomTableModel();
 	ImageIcon[] images;
@@ -80,10 +81,12 @@ public class Main extends JFrame implements ActionListener {
 		// add the toolbar below the menu bar
 		add(new Toolbar(tableModel), BorderLayout.NORTH);
 		
+		// add listeners to the right click menu
 		showSettings.addActionListener(this);
 		removeAll.addActionListener(this);
 		removeRow.addActionListener(this);
 		
+		// add the buttons to the right click panel
 		popup.add(showSettings);
 		popup.add(removeRow);
 		popup.add(removeAll);
@@ -91,6 +94,8 @@ public class Main extends JFrame implements ActionListener {
 		
 		tableModel.setTableFrame(this);
 		add(new JScrollPane(table), BorderLayout.CENTER);
+		
+		// set which cellEditor to use
 		table.getColumnModel().getColumn(0).setCellEditor(new DefaultCellEditor(objectType));
 		table.getColumnModel().getColumn(8).setCellEditor(new DefaultCellEditor(anchorList));
 		table.getColumnModel().getColumn(7).setCellEditor(new DefaultCellEditor(fillList));
@@ -106,6 +111,7 @@ public class Main extends JFrame implements ActionListener {
 
 
 	/**
+	 * Our main program, creates an object on the main class!
 	 * @param args The variables that are sent with the "java" command
 	 */
 	public static void main(String[] args) {
@@ -154,6 +160,9 @@ public class Main extends JFrame implements ActionListener {
 		fillList.setMaximumRowCount(3);
 	}
 	
+	/**
+	 * Method that fires on certain events, in this case that would be when you select a menu item
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
         JMenuItem menu = (JMenuItem) e.getSource();

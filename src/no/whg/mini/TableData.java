@@ -11,7 +11,11 @@ import java.io.Serializable;
  *
  */
 public class TableData implements Serializable {
-    private String type;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private String type;
     private String varName;
     private String text;
     private String row;

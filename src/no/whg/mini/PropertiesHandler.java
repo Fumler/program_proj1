@@ -3,35 +3,21 @@
  */
 package no.whg.mini;
 
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-
 import javax.swing.JCheckBox;
 import javax.swing.JComponent;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 /**
  * Class that handles the OptionPane for the different types in the right click context menu
+ * Opens a dialog with textfields that the user can put in
+ * TODO: Add error checking to see if values are actually numeric, function is already there, but not used yet
  * @author Fredrik
  *
  */
+@SuppressWarnings("serial")
 public class PropertiesHandler extends JOptionPane {
-	private String type;
-	private int kolloenner;
-	private int width;
-	private int height;
-	private int columns;
-	private JCheckBox cb1 = new JCheckBox();
-	private JCheckBox cb2 = new JCheckBox();
-	private String s;
-	private TableData data;
-	
-	final JFrame parent = new JFrame();
-	
 	private String[] labels = {
 			Messages.getString("Table.rows"),
 			Messages.getString("Table.columns"),
@@ -46,12 +32,12 @@ public class PropertiesHandler extends JOptionPane {
 	};
 
 	/**
-	 * @param type
+	 * Constructor of the PropertiesHandler class
+	 * This class could probably have been a method, but for tidiness we put it as a class
+	 * @param TableData data the data object you wish to edit values of
 	 */
 	public PropertiesHandler(TableData data) {
 		super();
-		this.data = data;
-	
 		if (data.getType() == "JTextField") {
 			JTextField rows = new JTextField();
 			JTextField width = new JTextField();
@@ -169,6 +155,12 @@ public class PropertiesHandler extends JOptionPane {
 		}	
 	}
 	
+	/**
+	 * Method that checks if a string is a numeric value
+	 * @param str given string
+	 * @return true if given string is numeric
+	 */
+	@SuppressWarnings("unused")
 	private boolean isNumeric(String str) {
 		return str.matches("-?\\d+(\\.\\d+)?");
 	}
