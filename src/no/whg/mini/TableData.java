@@ -26,13 +26,30 @@ public class TableData implements Serializable {
     private String optionsColumns;
     private boolean optionsScrollPane;
     private boolean optionsComboBox;
+    private boolean optionsWordWrapping;
     private String[] optionsSpinnerListArray;
     private float optionsStartValue;
     private float optionsMinValue;
     private float optionsMaxValue;
     private float optionsStepValue;
     
+    
+    
     /**
+	 * @return the optionsWordWrapping
+	 */
+	public boolean isOptionsWordWrapping() {
+		return optionsWordWrapping;
+	}
+
+	/**
+	 * @param optionsWordWrapping the optionsWordWrapping to set
+	 */
+	public void setOptionsWordWrapping(boolean optionsWordWrapping) {
+		this.optionsWordWrapping = optionsWordWrapping;
+	}
+
+	/**
 	 * @return the optionsHeight
 	 */
 	public String getOptionsHeight() {
@@ -211,6 +228,8 @@ public class TableData implements Serializable {
         columns = "1";
         fill = "1";
         anchor = "";
+        
+        System.out.println(optionsScrollPane);
     }
     /**
      * @param type
