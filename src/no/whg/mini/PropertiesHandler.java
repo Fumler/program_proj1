@@ -69,6 +69,7 @@ public class PropertiesHandler extends JOptionPane {
 			data.setOptionsRows(height.getText());
 		} else if (data.getType() == "JTextArea") {
 			
+			
 		} else if (data.getType() == "JList") {
 			
 		} else if (data.getType() == "JComboBox") {
