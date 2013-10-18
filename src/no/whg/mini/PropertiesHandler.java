@@ -41,7 +41,8 @@ public class PropertiesHandler extends JOptionPane {
 			Messages.getString("Options.JSpinnerList"),
 			Messages.getString("Options.JTextArea1"),
 			Messages.getString("Options.JTextArea2"),
-			Messages.getString("Options.JList1")
+			Messages.getString("Options.JList1"),
+			Messages.getString("Options.JList2")
 	};
 
 	/**
@@ -68,6 +69,30 @@ public class PropertiesHandler extends JOptionPane {
 			data.setOptionsWidth(width.getText());
 			data.setOptionsRows(height.getText());
 		} else if (data.getType() == "JTextArea") {
+			JTextField columns = new JTextField();
+			JTextField rows = new JTextField();
+			JTextField width = new JTextField();
+			JTextField height = new JTextField();
+			JCheckBox scroll = new JCheckBox();
+            JCheckBox wrap = new JCheckBox();
+            
+            final JComponent[] inputs = new JComponent[] {
+                    new JLabel(labels[1]), columns,
+                    new JLabel(labels[0]), rows,
+                    new JLabel(labels[3]), width,
+                    new JLabel(labels[2]), height,
+                    new JLabel(labels[6]), scroll,
+                    new JLabel(labels[7]), wrap
+            };
+ 
+            showMessageDialog(null, inputs, data.getType() + " dialog", JOptionPane.PLAIN_MESSAGE);
+            
+            data.setOptionsHeight(height.getText());
+            data.setOptionsWidth(width.getText());
+            data.setOptionsRows(rows.getText());
+            data.setOptionsColumns(columns.getText());
+            data.setOptionsScrollPane(scroll.isSelected());
+            data.setOptionsWordWrapping(wrap.isSelected());
 			
 			
 		} else if (data.getType() == "JList") {
