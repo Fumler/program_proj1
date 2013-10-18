@@ -26,7 +26,8 @@ import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
 /**
  * @author PeerAndreas
- *
+ * @description Class that handles the menubar that is used for various operations in the
+ * program
  */
 @SuppressWarnings("serial")
 

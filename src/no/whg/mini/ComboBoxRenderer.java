@@ -11,6 +11,7 @@ import javax.swing.table.TableCellRenderer;
 import java.io.*;
 /**
  * @author PeerAndreas
+ * @description The class that renders the images that are placed in a JList
  *
  */
 public class ComboBoxRenderer extends JLabel implements ListCellRenderer, TableCellRenderer

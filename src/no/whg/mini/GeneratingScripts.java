@@ -8,6 +8,8 @@ import java.util.Vector;
 
 /**
  * @author Peer Andreas Stange
+ * @description The class that generates the string that is later written to file when you get it from
+ * the passed vector
  *
  */
 public class GeneratingScripts {
@@ -179,8 +181,8 @@ public class GeneratingScripts {
 			longAssString += "gbc.gridy = " + column + ";\n";
 			longAssString += "gbc.gridwidth = " + rows + ";\n";
 			longAssString += "gbc.gridheight = " + columns + ";\n";
-			longAssString += "gbc.anchor = java.awt.GridBagConstraints." + anchor + ";\n";	
-			longAssString += "gbc.fill = java.awt.GridBagConstraints." + fill + ";\n";	
+			longAssString += "gbc.anchor = java.awt.GridBagConstraints." + anchor + ";\n";	//OOOOPS! You must have selected an anchor for this to be filled, not doing so will crash the program
+			longAssString += "gbc.fill = java.awt.GridBagConstraints." + fill + ";\n";	//OOOOOPS! You must have selected an fill for this to be filled, not doing so will crash the program
 			
 			if(scrollPane)
 			{
