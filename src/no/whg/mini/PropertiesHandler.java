@@ -116,7 +116,21 @@ public class PropertiesHandler extends JOptionPane {
 			data.setOptionsComboBox(combo.isSelected());
 			
 		} else if (data.getType() == "JComboBox") {
+			JTextField height = new JTextField();
+			JTextField width = new JTextField();
+			JCheckBox combo = new JCheckBox();
 			
+			final JComponent[] inputs = new JComponent[] {
+					new JLabel(labels[2]), height,
+					new JLabel(labels[3]), width,
+					new JLabel(labels[4]), combo
+			};
+			
+			showMessageDialog(null, inputs, data.getType() + " dialog", JOptionPane.PLAIN_MESSAGE);
+			
+			data.setOptionsHeight(height.getText());
+			data.setOptionsWidth(width.getText());
+			data.setOptionsComboBox(combo.isSelected());
 		} else if (data.getType() == "JSpinnerList") {
 			
 		} else if (data.getType() == "JSpinnerNumber") {
