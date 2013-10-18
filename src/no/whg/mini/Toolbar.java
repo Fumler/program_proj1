@@ -220,11 +220,13 @@ public class Toolbar extends JToolBar implements ActionListener, ItemListener
 			
 			if(currentFile != null) //as long as there is a file to save
 			{
-				String generatedCode = tableModel.startGeneration(currentFile.getName());
+				String className = currentFile.getName();
+				className = className.split("\\.")[0];			
+				String generatedCode = tableModel.startGeneration(className);
 				PrintStream out = null;
 				try 
 				{
-					
+							
 					out = new PrintStream(new FileOutputStream(currentFile.getAbsolutePath()));
 					out.print(generatedCode);
 				} 
@@ -249,7 +251,7 @@ public class Toolbar extends JToolBar implements ActionListener, ItemListener
 					currentFile = saveAsWindow.getSelectedFile();
 					String className = currentFile.getName();
 					className = className.split("\\.")[0];
-					String generatedCode = tableModel.startGeneration(currentFile.getName());
+   					String generatedCode = tableModel.startGeneration(currentFile.getName());
 					PrintStream out = null;
 					try 
 					{

@@ -231,7 +231,9 @@ public class Menubar extends JMenuBar implements ActionListener, ItemListener
 			
 			if(currentFile != null)	//if we have saved the file to a location
 			{
-				String generatedCode = tableModel.startGeneration(currentFile.getName());
+				String className = currentFile.getName();
+				className = className.split("\\.")[0];			
+				String generatedCode = tableModel.startGeneration(className);
 				PrintStream out = null;
 				try 
 				{
@@ -258,7 +260,9 @@ public class Menubar extends JMenuBar implements ActionListener, ItemListener
 				if(rVal == JFileChooser.APPROVE_OPTION)	//if the user choose the save option
 				{
 					currentFile = saveAsWindow.getSelectedFile();
-					String generatedCode = tableModel.startGeneration(currentFile.getName());
+					String className = currentFile.getName();
+					className = className.split("\\.")[0];			
+					String generatedCode = tableModel.startGeneration(className);
 					PrintStream out = null;
 					
 					try 
@@ -285,9 +289,6 @@ public class Menubar extends JMenuBar implements ActionListener, ItemListener
 		}
 		else if(e.getActionCommand() == "newRow") {
 			tableModel.addRow();
-		}
-		
+		}	
 	}
-
-
 }
