@@ -27,6 +27,7 @@ public class CustomTableModel extends AbstractTableModel implements Serializable
     JFrame mainFrame;
     private JTable table;
     public GeneratingScripts scriptGen;
+    private String generatedCode = new String();
 
     public static final String[] columns = { 
         Messages.getString("Table.type"), // 0
@@ -203,9 +204,12 @@ public class CustomTableModel extends AbstractTableModel implements Serializable
     	fireTableRowsDeleted(row, row);
     }
     
-    public void startGeneration()
+    public String startGeneration(String className)
     {
-    	scriptGen = new GeneratingScripts(dataVector);
+    	scriptGen = new GeneratingScripts(dataVector, className);
+    	generatedCode = scriptGen.generate();
+    	
+    	return generatedCode;
     }
 
 }

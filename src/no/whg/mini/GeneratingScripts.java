@@ -14,17 +14,19 @@ public class GeneratingScripts {
 	
 	private Vector<TableData> generatingVector;
 	public String longAssString;
+	private String className;
 	
 	public GeneratingScripts()
 	{
 		
 	}
 	
-	public GeneratingScripts(Vector<TableData> genVec)
+	public GeneratingScripts(Vector<TableData> genVec, String className)
 	{
+		this.className = className;
 		this.generatingVector = genVec;
-		longAssString = new String("import javax.swing.*; \n import java.awt.*; \n public class"  /*sett inn navn fra filnavn*/
-		+ "extends JPanel{");
+		longAssString = new String("import javax.swing.*; \n import java.awt.*; \n public class  " + this.className
+		+ " extends JPanel{");
 	}
 	
 	public String generate()
@@ -77,7 +79,7 @@ public class GeneratingScripts {
 			
 		}
 		
-		longAssString += "public " + /*insert class name from filename*/ "(){\n GridBagLayout layout  = new GridBagLayout();\n"
+		longAssString += "public " + this.className + "(){\n GridBagLayout layout  = new GridBagLayout();\n"
 				+ "GridBagConstraints gbc = new  GridBagConstraints();\n"
 				+ "setLayout(layout);\n";
 		

@@ -228,7 +228,60 @@ public class Menubar extends JMenuBar implements ActionListener, ItemListener
 		}
 		else if(e.getActionCommand() == "generate")
 		{
-			tableModel.startGeneration();
+			
+			if(currentFile != null)	//if we have saved the file to a location
+			{
+				String className = currentFile.getName();
+				className = className.split("\\.")[0];			
+				String generatedCode = tableModel.startGeneration(className);
+				PrintStream out = null;
+				try 
+				{
+					
+					out = new PrintStream(new FileOutputStream(currentFile.getAbsolutePath()));
+					out.print(generatedCode);
+				} 
+				catch (FileNotFoundException e1)
+				{
+					e1.printStackTrace();
+				}
+				finally
+				{
+					if(out != null)
+						out.close();
+				}
+			
+			}
+			else	//if you have not saved the file to a location before
+			{
+				JFileChooser saveAsWindow = new JFileChooser();	//create a new FileChooser
+				int rVal = saveAsWindow.showSaveDialog(Menubar.this);	//creates a window for saving files and specify name
+				
+				if(rVal == JFileChooser.APPROVE_OPTION)	//if the user choose the save option
+				{
+					currentFile = saveAsWindow.getSelectedFile();
+					String className = currentFile.getName();
+					className = className.split("\\.")[0];			
+					String generatedCode = tableModel.startGeneration(className);
+					PrintStream out = null;
+					
+					try 
+					{
+						
+						out = new PrintStream(new FileOutputStream(currentFile.getAbsolutePath()));
+						out.print(generatedCode);
+					} 
+					catch (FileNotFoundException e1)
+					{
+						e1.printStackTrace();
+					}
+					finally
+					{
+						if(out != null)
+							out.close();
+					}
+				}
+			}	
 		}
 		else if(e.getActionCommand() == "exit")
 		{
@@ -236,9 +289,6 @@ public class Menubar extends JMenuBar implements ActionListener, ItemListener
 		}
 		else if(e.getActionCommand() == "newRow") {
 			tableModel.addRow();
-		}
-		
+		}	
 	}
-
-
 }

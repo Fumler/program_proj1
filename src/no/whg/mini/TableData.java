@@ -1,4 +1,4 @@
-/**
+      /**
  * 
  */
 package no.whg.mini;
@@ -332,6 +332,23 @@ public class TableData implements Serializable {
      */
     public void setFill(String fill) {
         this.fill = fill;
+        
+        if(this.fill.equals("0"))
+        {
+        	this.fill = "BOTH";
+        }
+        else if(this.fill.equals("1"))
+        {
+        	this.fill = "HORIZONTAL";
+        }
+        else if(this.fill.equals("2"))
+        {
+        	this.fill = "NONE";
+        }
+        else if(this.fill.equals("3"))
+        {
+        	this.fill = "VERTICAL";
+        }
     }
     /**
      * @return the anchor
@@ -344,6 +361,43 @@ public class TableData implements Serializable {
      */ 
     public void setAnchor(String anchor) {
         this.anchor = anchor;
+        
+        if(this.anchor.equals("0"))
+        {
+        	this.anchor = "CENTER";    			
+        }
+        else if(this.anchor.equals("1"))
+        {
+        	this.anchor = "EAST";
+        }
+        else if(this.anchor.equals("2"))
+        {
+        	this.anchor = "NORTH";
+        }
+        else if(this.anchor.equals("3"))
+        {
+        	this.anchor = "NORTHEAST";
+        }
+        else if(this.anchor.equals("4"))
+        {
+        	this.anchor = "NORTHWEST";
+        }
+        else if(this.anchor.equals("5"))
+        {
+        		this.anchor = "SOUTH";
+        }
+        else if(this.anchor.equals("6"))
+        {
+        	this.anchor = "SOUTHEAST";
+        }
+        else if(this.anchor.equals("7"))
+        {
+        	this.anchor = "SOUTHWEST";
+        }
+        else if(this.anchor.equals("8"))
+        {
+        	this.anchor = "SOUTHWEST";
+        }
     }
 
 }
