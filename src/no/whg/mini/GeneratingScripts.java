@@ -1,4 +1,4 @@
-/**
+/**odel= atas
  * 
  */
 package no.whg.mini;
@@ -32,7 +32,7 @@ public class GeneratingScripts {
 	public String generate()
 	{
 		for(int i = 0; i < generatingVector.size(); i++)
-		{
+		 {
 			TableData currentRow = generatingVector.elementAt(i);
 			String currentType = currentRow.getType();
 			String varName = currentRow.getVarName();
@@ -57,11 +57,27 @@ public class GeneratingScripts {
 			}
 			else if(currentType == "JTextField")
 			{
-				longAssString += "JTextField " + varName + " = new JTextField(\"" + text + "\");\n";
+				
+				if(optionsRows == null)
+				{
+					longAssString += "JTextField " + varName + " = new JTextField(\"" + text + "\");\n";
+				}
+				else
+				{
+					longAssString += "JTextField " + varName + " = new JTextField(\"" + text + "\", " + optionsRows +");\n";
+				}
 			}
 			else if(currentType == "JTextArea")
 			{
-				longAssString += "JTextArea " + varName + " = new JTextArea(\"" + text + "\");\n";
+				if(optionsColumns == null)
+				{
+					longAssString += "JTextArea " + varName + " = new JTextArea(\"" + text + "\");\n";
+				}
+				else
+				{
+					longAssString += "JTextArea " + varName + " = new JTextArea(\"" + text + "\","+ optionsRows
+							+ "," + optionsColumns + ");\n";
+				}
 			}
 			else if(currentType == "JCheckBox")
 			{
@@ -73,7 +89,17 @@ public class GeneratingScripts {
  			}
 			else if(currentType == "JComboBox")
 			{
-				longAssString += "JComboBox" + varName + " = new JComboBox(\"" + text + "\");\n";
+				if(optionsHeight == null)
+				{
+					longAssString += "JComboBox" + varName + " = new JComboBox(\"" + text + "\");\n";
+				}
+				else
+				{
+					longAssString += "String " + varName + "Data = " + "\"" + text + "\";\n"
+							+ "DefaultComboBoxModel " +varName+ "Model" + " = new DefaultComboBoxModel(" +varName +
+							"Data.split(\"[\\\\p{Punct}\\\\s]+\"));\n"
+							+ "JComboBox" + varName + " = new JComboBox(" + varName +"Model);\n";
+				}
 			}
 			else if(currentType == "JSpinnerList")
 			{
@@ -83,8 +109,6 @@ public class GeneratingScripts {
 			{
 				longAssString += "JSpinnerNumber " + varName + " = new JSpinnerNumber(\"" + text + "\");\n";
 			}
-			
-			
 		}
 		
 		longAssString += "public " + this.className + "(){\n GridBagLayout layout  = new GridBagLayout();\n"
@@ -94,6 +118,8 @@ public class GeneratingScripts {
 		for(int j = 0; j < generatingVector.size(); j++)
 		{
 			TableData currentRow = generatingVector.elementAt(j);
+			
+			String type = currentRow.getType();
 			String name = currentRow.getVarName();
 			String row = currentRow.getRow();
 			String column = currentRow.getColumn();
@@ -101,16 +127,56 @@ public class GeneratingScripts {
 			String columns = currentRow.getColumns();
 			String fill = currentRow.getFill();
 			String anchor = currentRow.getAnchor();
+			String optionsWidth = currentRow.getOptionsWidth();
+			String optionsHeight = currentRow.getOptionsHeight();
+			boolean wordWrap = currentRow.isOptionsWordWrapping();
+			boolean scrollPane = currentRow.isOptionsScrollPane();
 			
+			if(type == "JTextArea")
+			{
+				if(wordWrap)
+				{
+					longAssString += name + ".setLineWrap(true);\n" +
+							name + ".setWordWrap(true);\n";
+				}
+				if(scrollPane)
+				{
+					longAssString += "JScrollPane " + name + "ScrollPane = new ScrollPane(" + name + ");\n"
+							+ name + "ScrollPane.setPreferredSize(new jawa.awt.Dimension(" + optionsWidth + "," + optionsHeight + "));\n";
+				}
+			}
+			else if(type == "JTextField")
+			{
+				if(optionsWidth != null)
+				{
+					longAssString += name + ".setPreferredSize(new java.awt.Dimension("+ optionsWidth +"," + optionsHeight + "));\n";
+				}
+			}
+			else if(type == "JComboBox")
+			{
+				if(optionsWidth != null)
+				{
+					longAssString +=  name + ".setPreferredSize(new java.awt.Dimension(" + optionsWidth + "," + optionsHeight +"));\n";
+				}
+			}
 			longAssString += "gbc.gridx = " + row + ";\n";
 			longAssString += "gbc.gridy = " + column + ";\n";
 			longAssString += "gbc.gridwidth = " + rows + ";\n";
 			longAssString += "gbc.gridheight = " + columns + ";\n";
 			longAssString += "gbc.anchor = jawa.awt.GridBagConstraints." + anchor + ";\n";
 			longAssString += "gbc.fill = jawa.awt.GridBagConstraints." + fill + ";\n";
-			longAssString += "layout.SetConstraints(" + name + ", gbc);\n";
-			longAssString += "add(" + name + ");\n";
 			
+			if(scrollPane)
+			{
+				longAssString += "layout.SetConstraints(" + name + "ScrollPane, gbc);\n";
+				longAssString += "add(" + name + "ScrollPane);\n";
+				
+			}
+			else
+			{
+				longAssString += "layout.SetConstraints(" + name + ", gbc);\n";
+				longAssString += "add(" + name + ");\n";
+			}
 		}
 		
 		longAssString += "}}";
