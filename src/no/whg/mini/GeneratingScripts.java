@@ -37,7 +37,15 @@ public class GeneratingScripts {
 			String currentType = currentRow.getType();
 			String varName = currentRow.getVarName();
 			String text = currentRow.getText();
-		
+			String[] spinnerListArray = currentRow.getOptionsSpinnerListArray();
+			String optionsColumns = currentRow.getOptionsColumns();
+			String optionsHeight = currentRow.getOptionsHeight();
+			String optionsWidth = currentRow.getOptionsWidth();
+			String optionsRows = currentRow.getOptionsRows();
+			float optionsMaxValue = currentRow.getOptionsMaxValue();
+			float optionsMinValue = currentRow.getOptionsMinValue();
+			float optionsStartValue = currentRow.getOptionsStartValue();
+			float optionsStepValue = currentRow.getOptionsStepValue();
 			
 			if(currentType == "JLabel")
 			{
