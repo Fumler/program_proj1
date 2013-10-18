@@ -215,15 +215,15 @@ public class TableData implements Serializable {
         column = "1";
         rows = "1";
         columns = "1";
-        fill = "1";
-        anchor = "";
+        fill = "NONE";
+        anchor = "CENTER";
     }
     
     /**
      * @param varName
      */
     public TableData(String varName) {
-    	type = "JPanel";
+    	type = "JButton";
         this.varName = varName;
         text = "text";
         row = "1";

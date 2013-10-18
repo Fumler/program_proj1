@@ -179,8 +179,8 @@ public class GeneratingScripts {
 			longAssString += "gbc.gridy = " + column + ";\n";
 			longAssString += "gbc.gridwidth = " + rows + ";\n";
 			longAssString += "gbc.gridheight = " + columns + ";\n";
-			longAssString += "gbc.anchor = java.awt.GridBagConstraints." + anchor + ";\n";
-			longAssString += "gbc.fill = java.awt.GridBagConstraints." + fill + ";\n";
+			longAssString += "gbc.anchor = java.awt.GridBagConstraints." + anchor + ";\n";	
+			longAssString += "gbc.fill = java.awt.GridBagConstraints." + fill + ";\n";	
 			
 			if(scrollPane)
 			{
