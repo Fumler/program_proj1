@@ -20,11 +20,11 @@ public class GeneratingScripts {
 		
 	}
 	
-	public GeneratingScripts(Vector<TableData> genVec)
+	public GeneratingScripts(Vector<TableData> genVec, String className)
 	{
 		this.generatingVector = genVec;
-		longAssString = new String("import javax.swing.*; \n import java.awt.*; \n public class"  /*sett inn navn fra filnavn*/
-		+ "extends JPanel{");
+		longAssString = new String("import javax.swing.*; \n import java.awt.*; \n public class  " + className
+		+ " extends JPanel{");
 	}
 	
 	public String generate()

@@ -12,10 +12,12 @@ import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.PrintStream;
 import java.util.Vector;
 
 import javax.swing.ImageIcon;
@@ -215,7 +217,57 @@ public class Toolbar extends JToolBar implements ActionListener, ItemListener
 		}
 		else if(e.getActionCommand() == "generate")
 		{
-			tableModel.startGeneration();
+			
+			if(currentFile != null) //as long as there is a file to save
+			{
+				String generatedCode = tableModel.startGeneration(currentFile.getName());
+				PrintStream out = null;
+				try 
+				{
+					
+					out = new PrintStream(new FileOutputStream(currentFile.getAbsolutePath()));
+					out.print(generatedCode);
+				} 
+				catch (FileNotFoundException e1)
+				{
+					e1.printStackTrace();
+				}
+				finally
+				{
+					if(out != null)
+						out.close();
+				}
+			}
+			else
+			{
+				JFileChooser saveAsWindow = new JFileChooser();	//create a new FileChooser
+				int rVal = saveAsWindow.showSaveDialog(Toolbar.this);	//creates a window for saving files and specify name
+				
+				if(rVal == JFileChooser.APPROVE_OPTION)	//if the user chose the save option
+				{
+					
+					currentFile = saveAsWindow.getSelectedFile();
+					String className = currentFile.getName();
+					className = className.split("\\.")[0];
+					String generatedCode = tableModel.startGeneration(currentFile.getName());
+					PrintStream out = null;
+					try 
+					{
+						
+						out = new PrintStream(new FileOutputStream(currentFile.getAbsolutePath()));
+						out.print(generatedCode);
+					} 
+					catch (FileNotFoundException e1)
+					{
+						e1.printStackTrace();
+					}
+					finally
+					{
+						if(out != null)
+							out.close();
+					}
+				}
+			}
 		}
 		else if(e.getActionCommand() == "run")
 		{
