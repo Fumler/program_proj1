@@ -251,7 +251,7 @@ public class Toolbar extends JToolBar implements ActionListener, ItemListener
 					currentFile = saveAsWindow.getSelectedFile();
 					String className = currentFile.getName();
 					className = className.split("\\.")[0];
-   					String generatedCode = tableModel.startGeneration(currentFile.getName());
+   					String generatedCode = tableModel.startGeneration(className);
 					PrintStream out = null;
 					try 
 					{
