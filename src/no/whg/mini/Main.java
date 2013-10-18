@@ -158,7 +158,8 @@ public class Main extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
         JMenuItem menu = (JMenuItem) e.getSource();
         if (menu == showSettings) {
-            // TODO: open settings for object
+        	new PropertiesHandler(tableModel.save().get(table.getSelectedRow()));
+            
         } else if (menu == removeRow) {
             tableModel.deleteRow(table.getSelectedRow());
         } else if (menu == removeAll) {

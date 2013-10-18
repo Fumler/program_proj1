@@ -20,8 +20,173 @@ public class TableData implements Serializable {
     private String columns;
     private String fill;
     private String anchor;
+    private String optionsHeight;
+    private String optionsWidth;
+    private String optionsRows;
+    private String optionsColumns;
+    private boolean optionsScrollPane;
+    private boolean optionsComboBox;
+    private String[] optionsSpinnerListArray;
+    private float optionsStartValue;
+    private float optionsMinValue;
+    private float optionsMaxValue;
+    private float optionsStepValue;
     
-    public TableData() {
+    /**
+	 * @return the optionsHeight
+	 */
+	public String getOptionsHeight() {
+		return optionsHeight;
+	}
+
+	/**
+	 * @param optionsHeight the optionsHeight to set
+	 */
+	public void setOptionsHeight(String optionsHeight) {
+		this.optionsHeight = optionsHeight;
+	}
+
+	/**
+	 * @return the optionsWidth
+	 */
+	public String getOptionsWidth() {
+		return optionsWidth;
+	}
+
+	/**
+	 * @param optionsWidth the optionsWidth to set
+	 */
+	public void setOptionsWidth(String optionsWidth) {
+		this.optionsWidth = optionsWidth;
+	}
+
+	/**
+	 * @return the optionsRows
+	 */
+	public String getOptionsRows() {
+		return optionsRows;
+	}
+
+	/**
+	 * @param optionsRows the optionsRows to set
+	 */
+	public void setOptionsRows(String optionsRows) {
+		this.optionsRows = optionsRows;
+	}
+
+	/**
+	 * @return the optionsColumns
+	 */
+	public String getOptionsColumns() {
+		return optionsColumns;
+	}
+
+	/**
+	 * @param optionsColumns the optionsColumns to set
+	 */
+	public void setOptionsColumns(String optionsColumns) {
+		this.optionsColumns = optionsColumns;
+	}
+
+	/**
+	 * @return the optionsScrollPane
+	 */
+	public boolean isOptionsScrollPane() {
+		return optionsScrollPane;
+	}
+
+	/**
+	 * @param optionsScrollPane the optionsScrollPane to set
+	 */
+	public void setOptionsScrollPane(boolean optionsScrollPane) {
+		this.optionsScrollPane = optionsScrollPane;
+	}
+
+	/**
+	 * @return the optionsComboBox
+	 */
+	public boolean isOptionsComboBox() {
+		return optionsComboBox;
+	}
+
+	/**
+	 * @param optionsComboBox the optionsComboBox to set
+	 */
+	public void setOptionsComboBox(boolean optionsComboBox) {
+		this.optionsComboBox = optionsComboBox;
+	}
+
+	/**
+	 * @return the optionsSpinnerListArray
+	 */
+	public String[] getOptionsSpinnerListArray() {
+		return optionsSpinnerListArray;
+	}
+
+	/**
+	 * @param optionsSpinnerListArray the optionsSpinnerListArray to set
+	 */
+	public void setOptionsSpinnerListArray(String[] optionsSpinnerListArray) {
+		this.optionsSpinnerListArray = optionsSpinnerListArray;
+	}
+
+	/**
+	 * @return the optionsStartValue
+	 */
+	public float getOptionsStartValue() {
+		return optionsStartValue;
+	}
+
+	/**
+	 * @param optionsStartValue the optionsStartValue to set
+	 */
+	public void setOptionsStartValue(float optionsStartValue) {
+		this.optionsStartValue = optionsStartValue;
+	}
+
+	/**
+	 * @return the optionsMinValue
+	 */
+	public float getOptionsMinValue() {
+		return optionsMinValue;
+	}
+
+	/**
+	 * @param optionsMinValue the optionsMinValue to set
+	 */
+	public void setOptionsMinValue(float optionsMinValue) {
+		this.optionsMinValue = optionsMinValue;
+	}
+
+	/**
+	 * @return the optionsMaxValue
+	 */
+	public float getOptionsMaxValue() {
+		return optionsMaxValue;
+	}
+
+	/**
+	 * @param optionsMaxValue the optionsMaxValue to set
+	 */
+	public void setOptionsMaxValue(float optionsMaxValue) {
+		this.optionsMaxValue = optionsMaxValue;
+	}
+
+	/**
+	 * @return the optionsStepValue
+	 */
+	public float getOptionsStepValue() {
+		return optionsStepValue;
+	}
+
+	/**
+	 * @param optionsStepValue the optionsStepValue to set
+	 */
+	public void setOptionsStepValue(float optionsStepValue) {
+		this.optionsStepValue = optionsStepValue;
+	}
+
+	public TableData() {
         type = "JButton";
         varName = "var";
         text = "text";
